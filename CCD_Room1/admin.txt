@@ -1,3 +1,0 @@
-username: admin
-email id: admin@example.com
-password: +FuZ4#z$

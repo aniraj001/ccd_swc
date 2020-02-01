@@ -1,0 +1,36 @@
+{% extends 'room/base.html' %}
+
+{% block title %}Company Details{% endblock %}
+
+{% block body %}
+	<div class="container-fluid songs-container">
+		<div class="row">
+
+			<!-- Left - Company Info -->
+			<div class="col-sm-4 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<a href="{% url 'room:detail' company.id %}">
+							<img src="{{ company.company_logo.url }}" class="img-responsive">
+						</a>
+
+						<h1>{{ company.company_name }}
+							<small>{{ company.sector }}</small>
+						</h1>
+						<h2>{{ company.industry }}</h2>
+					</div>
+				</div>
+			</div>
+
+			<!-- Right - Hostel Info -->
+
+
+
+
+
+		</div>
+	</div>
+
+
+
+{% endblock %}

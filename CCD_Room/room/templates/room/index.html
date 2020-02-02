@@ -1,0 +1,54 @@
+{% extends 'room/base.html' %}
+{% block companies_active %}active{% endblock %}
+
+{% block body %}
+<div class="companies-container container-fluid">
+
+	<!-- Albums -->
+	<div class="row">
+		<div class="col-sm-12">
+			<h3>All Companies</h3>
+		</div>
+
+		{% for company in all_companies %}
+			<div class="col-sm-4 col-lg-2">
+				<div class="thumbnail">
+
+					<!-- Album logo -->
+					<a href="{% url 'room:detail' company.id %}">
+						<img src="{{ company.company_logo.url }}" class="img-responsive">
+					</a>
+
+					<div class="caption">
+						<h2>{{ company.company_name }}</h2>
+						<h4>{{ company.artist }}</h4>
+
+						<!-- Details -->
+						<a href="{% url 'room:detail' company.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+
+						<!-- Delete -->
+						<form action="{% url 'room:company-delete' company.id %}" method="post" style="display: inline;">
+							{% csrf_token %}
+							<input type="hidden" name="company_id" value="{{ company.id }}" />
+							<button type="submit" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-trash"></span>
+							</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+
+		{% endfor %}
+
+	</div>
+
+</div>
+
+	<div class="col-sm-4">
+		<a href = 'http://127.0.0.1:8000/' class="btn btn-default btn-lg">
+			<span class="glyphicon glyphicon-home"></span>
+		</a>
+	</div>
+
+{% endblock %}

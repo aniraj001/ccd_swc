@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+  Company Details
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid songs-container">
+		<div class="row">
+			<div class="col-sm-4 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<a href="{% url 'room:detail' company.id %}"><img src="{{ company.logo.url }}" class="img-responsive"></a>
+						<h1>{{ company.name }}<small>{{ company.poc }}</small></h1>
+						<h2>{{ company.industry }}</h2>
+					</div>
+				</div>
+			</div>
+    </div>
+  </div>
+  {% for room in company.rooms.all %}
+    <h1>{{ room.room_no }}</h1>
+    {% if room.hostel == "Brahmaputra" %}
+        <a href="{% url 'room:image1' pk=company.pk %}">{{ room.hostel }}</a>
+    {% else %}
+        <a href="{% url 'room:image2' pk=company.pk %}">{{ room.hostel }}</a>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

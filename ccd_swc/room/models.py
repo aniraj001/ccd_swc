@@ -5,7 +5,7 @@ class Company(models.Model):
 	name = models.CharField(max_length=250)
 	industry = models.CharField(max_length=250)
 	poc = models.CharField(max_length=250)
-	logo = models.ImageField(upload_to='company_logo',blank=True)
+	# logo = models.ImageField(upload_to='company_logo',blank=True)
 
 	def get_absolute_url(self):
 		return reverse('room:detail', kwargs={'pk': self.pk})

@@ -23,12 +23,15 @@ class ImageTwoView(TemplateView):
 	template_name = 'hostel_image2.html'
 
 class CompanyCreate(CreateView):
+	template_name = 'companycreate.html'
 	model = Company
-	fields = ('name', 'industry', 'poc', 'logo')
+	fields = ('name', 'industry', 'poc')
+	success_url = reverse_lazy('room:index')
+	# redirect_field_name = 'company_list.html'
 
 class CompanyUpdate(UpdateView):
 	model = Company
-	fields = ('name', 'industry', 'poc', 'logo')
+	fields = ('name', 'industry', 'poc')
 
 class CompanyDelete(DeleteView):
 	model = Company

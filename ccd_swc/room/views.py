@@ -16,6 +16,20 @@ class DetailView(generic.DetailView):
 	template_name = 'company_detail.html'
 	model = Company
 
+class AddRoom(CreateView):
+	template_name = 'add_room.html'
+	model = Room
+	fields = ('room_no', 'hostel')
+
+	def __init__(self):
+		company = self.request.GET.get('company')
+		return {'company':company}
+		# initial = super(AddRoom,self).get_initial()
+		# initial['company'] = Company.objects.get(pk=self.kwargs['pk'])
+		# return initial
+
+	success_url = reverse_lazy('room:index')
+
 class ImageOneView(TemplateView):
 	template_name = 'hostel_image1.html'
 
@@ -27,7 +41,6 @@ class CompanyCreate(CreateView):
 	model = Company
 	fields = ('name', 'industry', 'poc')
 	success_url = reverse_lazy('room:index')
-	# redirect_field_name = 'company_list.html'
 
 class CompanyUpdate(UpdateView):
 	model = Company

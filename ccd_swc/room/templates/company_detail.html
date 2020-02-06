@@ -25,4 +25,6 @@
         <a href="{% url 'room:image2' pk=company.pk %}">{{ room.hostel }}</a>
     {% endif %}
   {% endfor %}
+  <a href="{% url 'room:add_room' pk=company.pk %}">Add Room</a>
+
 {% endblock %}

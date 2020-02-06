@@ -11,7 +11,7 @@ class Company(models.Model):
 		return reverse('room:detail', kwargs={'pk': self.pk})
 
 	def __str__(self):
- 	       return self.name
+		return self.name
 
 class Hostel(models.Model):
 	name = models.CharField(max_length=100)

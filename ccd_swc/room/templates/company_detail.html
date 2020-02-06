@@ -19,7 +19,7 @@
   </div>
   {% for room in company.rooms.all %}
     <h1>{{ room.room_no }}</h1>
-    {% if room.hostel == "Brahmaputra" %}
+    {% if room.hostel.name == "Brahmaputra" %}
         <a href="{% url 'room:image1' pk=company.pk %}">{{ room.hostel }}</a>
     {% else %}
         <a href="{% url 'room:image2' pk=company.pk %}">{{ room.hostel }}</a>

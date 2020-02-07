@@ -1,2 +1,2 @@
 # ccd
-ccd-swc is current project folder
+ccd_swc is current project folder

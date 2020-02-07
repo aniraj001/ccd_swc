@@ -10,14 +10,15 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<a href="{% url 'room:detail' company.id %}"><img src="{{ company.logo.url }}" class="img-responsive"></a>
-						<h1>{{ company.name }}<small>{{ company.poc }}</small></h1>
-						<h2>{{ company.industry }}</h2>
+						<h2>Company: {{ company.name }}</h2>
+						<h2>Industry: {{ company.industry }}</h2>
+            <h3><small>POC: {{ company.poc }}</small></h3>
 					</div>
 				</div>
 			</div>
     </div>
   </div>
-  
+
   <button type="submit" class="btn btn-success"><a href="{% url 'room:add_room' pk=company.pk %}" style="color:black"">Add Room</a></button>
   <button type="submit" class="btn btn-success"><a href="{% url 'room:roomadd' pk=company.pk %}" style="color:black"">Room Add</a></button>
 

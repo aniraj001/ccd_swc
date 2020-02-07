@@ -10,7 +10,7 @@
         </a>
         <div class="caption">
           <h2>{{ company.name }}</h2>
-          <h4>{{ company.poc }}</h4>
+          <h4>{{ company.industry }}</h4>
           <a href="{% url 'room:detail' company.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
           <form action="{% url 'room:company-delete' company.id %}" method="post" style="display: inline;">
             {% csrf_token %}

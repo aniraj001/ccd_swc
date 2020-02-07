@@ -22,4 +22,6 @@ urlpatterns = [
 
     path('company/<int:pk>/roomadd',views.context_obj,name='roomadd'),
 
+    path('company/<int:pk>/rooms/image1/roomno',views.new,name='room_'),
+
 ]

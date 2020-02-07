@@ -26,18 +26,34 @@ class AddRoom(CreateView):
 def context_obj(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	if request.method == "POST":
-		form.company = company.name
+		# form.company = company.name
 		form = RoomForm(request.POST)
 		if form.is_valid():
 			r = form.save(commit=False)
+			# print(type(r))
 			r.save()
 			return redirect('room:detail', pk=company.pk)
 	else:
 		form = RoomForm()
 	return render(request,'add_room.html',{'form':form})
 
+def new(request,pk):
+	comp = get_object_or_404(Company,pk=pk)
+	# t = Room(company = comp.name , hostel = "Brahmaputra",room_no = "101")
+	comp.entry_set.add(Room())
+	# t.save()
+	return redirect('room:detail', pk=comp.pk)
+
 class ImageOneView(TemplateView):
 	template_name = 'hostel_image1.html'
+	def get_context_data(self,**kwargs):
+			context = super().get_context_data(**kwargs)
+			company = get_object_or_404(Company,pk=self.kwargs['pk'])
+			context['hostel'] = "Brahmaputra"
+			context['company'] = company.name
+			context['primary'] = company.pk
+			return context
+
 
 class ImageTwoView(TemplateView):
 	template_name = 'hostel_image2.html'

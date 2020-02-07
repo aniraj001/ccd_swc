@@ -26,8 +26,7 @@ class Room(models.Model):
 	room_no = models.CharField(max_length=100)
 	def company_fill(self,Company):
 		self.company = Company.pk
-
-
-
+	def save(self,*args, **kw):
+		super(Room,self).save(*args, **kw)
 	def __str__(self):
 		return self.room_no

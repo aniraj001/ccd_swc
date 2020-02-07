@@ -17,14 +17,30 @@
 			</div>
     </div>
   </div>
-  {% for room in company.rooms.all %}
-    <h1>{{ room.room_no }}</h1>
-    {% if room.hostel.name == "Brahmaputra" %}
-        <a href="{% url 'room:image1' pk=company.pk %}">{{ room.hostel }}</a>
-    {% else %}
-        <a href="{% url 'room:image2' pk=company.pk %}">{{ room.hostel }}</a>
-    {% endif %}
-  {% endfor %}
-  <a href="{% url 'room:add_room' pk=company.pk %}">Add Room</a>
-  <a href="{% url 'room:roomadd' pk=company.pk %}">Room Add</a>
+  
+  <button type="submit" class="btn btn-success"><a href="{% url 'room:add_room' pk=company.pk %}" style="color:black"">Add Room</a></button>
+  <button type="submit" class="btn btn-success"><a href="{% url 'room:roomadd' pk=company.pk %}" style="color:black"">Room Add</a></button>
+
+  <div class="jumbotron">
+    <h2><a href="{% url 'room:image1' pk=company.pk %}">Brahmaputra</a></h2>
+    <ul>
+      {% for room in company.rooms.all %}
+        {% if room.hostel.name == "Brahmaputra" %}
+        <h3><li>{{ room.room_no }}</li></h3>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="jumbotron">
+    <h2><a href="{% url 'room:image2' pk=company.pk %}">Lohit</a></h2>
+    <ul>
+      {% for room in company.rooms.all %}
+        {% if room.hostel.name == "Lohit" %}
+        <h3><li>{{ room.room_no }}</li></h3>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
 {% endblock %}

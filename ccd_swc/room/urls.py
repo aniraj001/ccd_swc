@@ -18,4 +18,6 @@ urlpatterns = [
 
 	path('company/<int:pk>/delete/', views.CompanyDelete.as_view(), name='company-delete'),
 
+    path('company/<int:pk>/add_room', views.AddRoom.as_view(), name='add_room'),
+
 ]

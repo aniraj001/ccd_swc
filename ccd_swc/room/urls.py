@@ -20,4 +20,6 @@ urlpatterns = [
 
     path('company/<int:pk>/add_room', views.AddRoom.as_view(), name='add_room'),
 
+    path('company/<int:pk>/roomadd',views.context_obj,name='roomadd'),
+
 ]

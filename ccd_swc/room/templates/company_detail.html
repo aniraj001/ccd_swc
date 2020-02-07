@@ -26,5 +26,5 @@
     {% endif %}
   {% endfor %}
   <a href="{% url 'room:add_room' pk=company.pk %}">Add Room</a>
-
+  <a href="{% url 'room:roomadd' pk=company.pk %}">Room Add</a>
 {% endblock %}

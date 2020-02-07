@@ -24,6 +24,10 @@ class Room(models.Model):
 	company = models.ForeignKey(Company,related_name="rooms",on_delete=models.CASCADE)
 	hostel = models.ForeignKey(Hostel,on_delete=models.CASCADE)
 	room_no = models.CharField(max_length=100)
+	def company_fill(self,Company):
+		self.company = Company.pk
+
+
 
 	def __str__(self):
 		return self.room_no

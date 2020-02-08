@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block title %}
   Company Details
 {% endblock %}
@@ -9,7 +10,7 @@
 			<div class="col-sm-4 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<a href="{% url 'room:detail' company.id %}"><img src="{{ company.logo.url }}" class="img-responsive"></a>
+						<a href="{% url 'room:detail' company.id %}"><img src="{% static company.get_photo_url %}" class="img-responsive"></a>
 						<h2>Company: {{ company.name }}</h2>
 						<h2>Industry: {{ company.industry }}</h2>
             <h3><small>POC: {{ company.poc }}</small></h3>

@@ -1,24 +1,28 @@
 {% extends 'base.html' %}
-
 {% load staticfiles %}
 {% block title %}
   Brahmaputra Map
 {% endblock %}
 
 {% block body %}
-  <!-- <img src="https://image.shutterstock.com/image-vector/no-image-available-icon-vector-260nw-1323742826.jpg" alt=""> -->
   <h2>Hostel: {{hostel}}</h2>
   <h2>Company: {{company}}</h2>
   <table>
     <tr>
-      <td class="m"><button type="submit" name="button"><a href="{% url 'room:room_' pk=primary %}">S-1</a></button></td>
-      <td class="m"><button type="submit" name="button"><a href="#">S-2</a></button></td>
-      <td class="m"><button type="submit" name="button"><a href="#">S-3</a></button></td>
+      <td><div class="lol"><a href="{% url 'room:room_' pk=primary %}">S-1</a></div></td>
+      <td><div class="lol">S-2</div></td>
+      <td><div class="lol">S-3</div></td>
     </tr>
     <tr>
-      <td class="m"><button type="submit" name="button"><a href="#">S-4</a></button></td>
-      <td class="m"><button type="submit" name="button"><a href="#">S-5</a></button></td>
-      <td class="m"><button type="submit" name="button"><a href="#">S-6</a></button></td>
+      <td><div class="lol">S-4</div></td>
+      <td><div class="lol">S-5</div></td>
+      <td><div class="lol">S-6</div></td>
+    </tr>
+    <tr>
+      <td><div class="lol">S-7</div></td>
+      <td><div class="lol">S-8</div></td>
+      <td><div class="lol">S-9</div></td>
     </tr>
   </table>
+  <button id = "hi">Submit</button>
 {% endblock %}

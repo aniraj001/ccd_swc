@@ -1,0 +1,3 @@
+username: admin
+email id: ccdadmin@gmail.com
+password: &23We@Q/nTL

@@ -9,4 +9,7 @@
     {{ form.as_p }}
     <input type="submit" class="btn btn-primary" value="SAVE">
   </form>
+  <script>
+    document.getElementById("id_company").innerHTML = "{{ company }}";
+  </script>
 {% endblock %}

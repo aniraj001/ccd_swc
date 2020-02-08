@@ -22,6 +22,12 @@ class AddRoom(CreateView):
 	model = Room
 	form_class = RoomForm
 	success_url = reverse_lazy('room:index')
+	def get_context_data(self,**kwargs):
+			context = super().get_context_data(**kwargs)
+			company = get_object_or_404(Company,pk=self.kwargs['pk'])
+			context['company'] = company.name
+
+			return context
 
 def context_obj(request,pk):
 	company = get_object_or_404(Company,pk=pk)
@@ -39,9 +45,11 @@ def context_obj(request,pk):
 
 def new(request,pk):
 	comp = get_object_or_404(Company,pk=pk)
-	# t = Room(company = comp.name , hostel = "Brahmaputra",room_no = "101")
-	comp.entry_set.add(Room())
-	# t.save()
+	s = Hostel(name = "brahmaputra")
+	s.save()
+	t = Room(company = comp , hostel = s,room_no = "101")
+	#comp.entry_set.add(Room())
+	t.save()
 	return redirect('room:detail', pk=comp.pk)
 
 class ImageOneView(TemplateView):

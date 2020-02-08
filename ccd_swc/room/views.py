@@ -39,7 +39,7 @@ def context_obj(request,pk):
 def new(request,pk):
 	comp = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Brahmaputra")
-	t = Room(company = comp , hostel = s,room_no = "S-101")
+	t = Room(company = comp , hostel = s[0],room_no = "S-101")
 	t.save()
 	return redirect('room:detail', pk=comp.pk)
 

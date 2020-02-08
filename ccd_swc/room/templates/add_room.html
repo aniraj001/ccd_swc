@@ -7,6 +7,7 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    {{company}}
     <input type="submit" class="btn btn-primary" value="SAVE">
   </form>
 {% endblock %}

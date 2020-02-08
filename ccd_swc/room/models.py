@@ -15,7 +15,7 @@ class Company(models.Model):
 
 class Hostel(models.Model):
 	name = models.CharField(max_length=100)
-	image = models.ImageField(upload_to='hostel_maps')
+	image = models.ImageField(upload_to='hostel_maps',blank=True)
 
 	def __str__(self):
 		return self.name

@@ -39,10 +39,10 @@ def context_obj(request,pk):
 def new(request,pk):
 	comp = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Brahmaputra")
-	if Room.objects.filter(company=comp,hostel = s[0],room_no = "S103").exists():
+	if Room.objects.filter(company=comp,hostel = s[0],room_no = "S-1").exists():
             pass
 	else:
-		t = Room(company = comp,hostel = s[0],room_no = "S103")
+		t = Room(company = comp,hostel = s[0],room_no = "S-1")
 		t.save()
 	return redirect('room:image1', pk=comp.pk)
 

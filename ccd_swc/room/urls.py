@@ -4,25 +4,23 @@ from . import views
 app_name = 'room'
 
 urlpatterns = [
-    # path('', views.IndexView.as_view(), name='index'),
+
     path('', views.search, name='index'),
 
-    path('company/<int:pk>/rooms/image1', views.ImageOneView.as_view(), name='image1'),
+    path('<int:pk>/brahmaputra', views.ImageOneView.as_view(), name='image1'),
 
-    path('company/<int:pk>/rooms/image2', views.ImageTwoView.as_view(), name='image2'),
+    path('<int:pk>/lohit', views.ImageTwoView.as_view(), name='image2'),
 
 	path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 
-	path('company/add/', views.CompanyCreate.as_view(), name='company-add'),
+	path('add_company/', views.CompanyCreate.as_view(), name='company-add'),
 
-    # path('company/add/', views.register, name='company-add'),
-
-	path('company/<int:pk>/', views.CompanyUpdate.as_view(), name='company-update'),
+	path('<int:pk>/company_update', views.CompanyUpdate.as_view(), name='company-update'),
 
 	path('company/<int:pk>/delete/', views.CompanyDelete.as_view(), name='company-delete'),
 
-    path('company/<int:pk>/roomadd',views.context_obj,name='roomadd'),
+    path('<int:pk>/add_room',views.context_obj,name='roomadd'),
 
-    path('company/<int:pk>/rooms/image1/roomno',views.new,name='room_'),
+    path('<int:pk>/brahmaputra/room_no',views.new,name='room_'),
 
 ]

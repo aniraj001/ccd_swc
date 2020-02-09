@@ -11,6 +11,8 @@
     <tr>
       {% if user.is_authenticated %}
       <td><div class="lol"><a href="{% url 'room:room_' pk=primary %}">S-1</a></div></td>
+      {% else %}
+      <td><div class="lol">S-1</div></td>
       {% endif %}
       <td><div class="lol">S-2</div></td>
       <td><div class="lol">S-3</div></td>

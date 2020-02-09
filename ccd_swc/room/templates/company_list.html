@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %} CCD Room Allotment {% endblock %}
+
+{% block navigation %}
+<div class="collapse navbar-collapse" id="topNavBar">
+
+  <form class="navbar-form navbar-left" role="search" method="get" action=".">
+    <div class="form-group">
+      <input type="text" class="form-control" name="q" placeholder="Enter Company Name">
+    </div>
+    <button type="submit" value="{{query|escape}}" class="btn btn-outline-primary">Search</button>
+  </form>
+{% endblock %}
+
 {% block body %}
   <h1 class="list"><strong>Company List</strong></h1>
   {% for company in results %}

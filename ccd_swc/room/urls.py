@@ -4,7 +4,8 @@ from . import views
 app_name = 'room'
 
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
+    # path('', views.IndexView.as_view(), name='index'),
+    path('', views.search, name='index'),
 
     path('company/<int:pk>/rooms/image1', views.ImageOneView.as_view(), name='image1'),
 

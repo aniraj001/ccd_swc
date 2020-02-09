@@ -3,7 +3,7 @@
 {% block title %} CCD Room Allotment {% endblock %}
 {% block body %}
   <h1 class="list"><strong>Company List</strong></h1>
-  {% for company in company_list %}
+  {% for company in results %}
   <div class="container col-sm-4 col-lg-2">
       <div class="thumbnail">
         <a href="{% url 'room:detail' company.id %}">

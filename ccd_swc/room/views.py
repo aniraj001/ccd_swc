@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic.edit import  CreateView, UpdateView, DeleteView
+from django.views.generic.edit import  CreateView, UpdateView, DeleteView, FormView
 from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
@@ -7,15 +7,19 @@ from django.contrib.auth import authenticate, login
 from django.views import generic
 from django.views.generic import View
 from .models import Company, Hostel, Room
-from .forms import RoomForm
-
-class IndexView(generic.ListView):
-	template_name = 'company_list.html'
-	model = Company
+from .forms import RoomForm, FilebabyForm
 
 class DetailView(generic.DetailView):
 	template_name = 'company_detail.html'
 	model = Company
+
+def search(request):
+    query = request.GET.get('q','')
+    if query:
+            results = Company.objects.filter(name=query)
+    else:
+       results = Company.objects.all()
+    return render(request, 'company_list.html', {'results':results})
 
 def context_obj(request,pk):
 	company = get_object_or_404(Company,pk=pk)

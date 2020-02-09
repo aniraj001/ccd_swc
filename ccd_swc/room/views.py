@@ -52,7 +52,6 @@ class ImageOneView(TemplateView):
 			context['primary'] = company.pk
 			return context
 
-
 class ImageTwoView(TemplateView):
 	template_name = 'hostel_image2.html'
 
@@ -63,6 +62,7 @@ class CompanyCreate(CreateView):
 	success_url = reverse_lazy('room:index')
 
 class CompanyUpdate(UpdateView):
+	template_name = 'companycreate.html'
 	model = Company
 	fields = ('name', 'industry', 'poc','logo')
 

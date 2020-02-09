@@ -36,6 +36,22 @@ def context_obj(request,pk):
 		form = RoomForm()
 	return render(request,'add_room.html',{'form':form})
 
+def remove_room(request,pk):
+	comp = get_object_or_404(Company,pk=pk)
+	if request.method == 'POST':
+		form = RoomForm(request.POST)
+		h = request.POST.get('hostel')
+		room = request.POST.get('room_no')
+		if h =="1":
+			k = Hostel.objects.filter(name="Brahmaputra")
+		else:
+			k = Hostel.objects.filter(name="Lohit")
+		Room.objects.filter(company=comp,hostel=k[0],room_no=room).delete()
+		return redirect('room:detail', pk=comp.pk)
+	else:
+		form = RoomForm()
+	return render(request,'room_delete.html',context={'form':form})
+
 def new(request,pk):
 	comp = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Brahmaputra")

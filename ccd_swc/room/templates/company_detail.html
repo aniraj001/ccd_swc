@@ -21,6 +21,7 @@
   </div>
 
   <button type="submit" class="btn btn-success"><a href="{% url 'room:roomadd' pk=company.pk %}" style="color:black"">Add Room</a></button>
+  <button type="submit" class="btn btn-success"><a href="{% url 'room:room_remove' pk=company.pk %}" style="color:black"">Delete Room</a></button>
   <button type="submit" class="btn btn-success"><a href="{% url 'room:company-update' pk=company.pk %}" style="color:black"">Company Update</a></button>
 
   <div class="jumbotron">

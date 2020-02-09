@@ -20,9 +20,11 @@
     </div>
   </div>
 
+  {% if user.is_authenticated %}
   <button type="submit" class="btn btn-success"><a href="{% url 'room:roomadd' pk=company.pk %}" style="color:black"">Add Room</a></button>
   <button type="submit" class="btn btn-success"><a href="{% url 'room:room_remove' pk=company.pk %}" style="color:black"">Delete Room</a></button>
   <button type="submit" class="btn btn-success"><a href="{% url 'room:company-update' pk=company.pk %}" style="color:black"">Company Update</a></button>
+  {% endif %}
 
   <div class="jumbotron">
     <h2><a href="{% url 'room:image1' pk=company.pk %}">Brahmaputra</a></h2>

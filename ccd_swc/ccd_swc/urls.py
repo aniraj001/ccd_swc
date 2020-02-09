@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from room import views
+from django.contrib.auth import views as v
 
 urlpatterns = [
     path('',views.about,name='about'),
     path('admin/', admin.site.urls),
     path('room/',include("room.urls")),
+    path('accounts/login/', v.LoginView.as_view(), name='login'),
+    path('accounts/logout/', v.LogoutView.as_view(), name='logout'),
 ]
 if settings.DEBUG:
     import debug_toolbar

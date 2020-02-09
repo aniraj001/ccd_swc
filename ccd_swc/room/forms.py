@@ -9,4 +9,4 @@ class RoomForm(forms.ModelForm):
 class FilebabyForm(forms.ModelForm):
     class Meta:
         model = Company
-        fields = ('name', 'industry', 'poc','logo')
+        fields = ('name', 'industry', 'poc')

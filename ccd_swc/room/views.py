@@ -8,6 +8,7 @@ from django.views import generic
 from django.views.generic import View
 from .models import Company, Hostel, Room
 from .forms import RoomForm, FilebabyForm
+from django import forms
 
 class DetailView(generic.DetailView):
 	template_name = 'company_detail.html'
@@ -38,8 +39,11 @@ def context_obj(request,pk):
 def new(request,pk):
 	comp = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Brahmaputra")
-	t = Room(company = comp,hostel = s[0],room_no = "S103")
-	t.save()
+	if Room.objects.filter(company=comp,hostel = s[0],room_no = "S103").exists():
+            pass
+	else:
+		t = Room(company = comp,hostel = s[0],room_no = "S103")
+		t.save()
 	return redirect('room:image1', pk=comp.pk)
 
 class ImageOneView(TemplateView):
@@ -64,7 +68,7 @@ class CompanyCreate(CreateView):
 class CompanyUpdate(UpdateView):
 	template_name = 'companycreate.html'
 	model = Company
-	fields = ('name', 'industry', 'poc','logo')
+	fields = ('name', 'industry', 'poc')
 
 class CompanyDelete(DeleteView):
 	model = Company

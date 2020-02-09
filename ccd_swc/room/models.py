@@ -32,6 +32,9 @@ class Room(models.Model):
 	company = models.ForeignKey(Company,related_name="rooms",on_delete=models.CASCADE)
 	hostel = models.ForeignKey(Hostel,on_delete=models.CASCADE)
 	room_no = models.CharField(max_length=100)
+
+	class Meta:
+		unique_together = ['room_no','hostel']
 	def company_fill(self,Company):
 		self.company = Company.pk
 	def save(self,*args, **kw):

@@ -15,6 +15,8 @@ urlpatterns = [
 
 	path('company/add/', views.CompanyCreate.as_view(), name='company-add'),
 
+    # path('company/add/', views.register, name='company-add'),
+
 	path('company/<int:pk>/', views.CompanyUpdate.as_view(), name='company-update'),
 
 	path('company/<int:pk>/delete/', views.CompanyDelete.as_view(), name='company-delete'),

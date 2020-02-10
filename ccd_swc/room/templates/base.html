@@ -7,21 +7,20 @@
     {% endblock %}
   </title>
 
-	<!-- Loads the path to your static files -->
 	{% load staticfiles %}
-	
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Petit+Formal+Script&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href= "{% static "css/style.css" %}" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 	<nav class="navbar navbar-default">
 	<div class="container-fluid">
 
-		<!-- Header -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
 				<span class="icon-bar"></span>
@@ -31,59 +30,25 @@
 			<a class="navbar-brand" href="{% url 'room:index'  %}">CCD Room Allotment</a>
 		</div>
 
+		{% block navigation %}
+		{% endblock %}
 
-		<!-- Items -->
-		<div class="collapse navbar-collapse" id="topNavBar">
+		<ul class="nav navbar-nav">
+		{% if user.is_authenticated %}
+			<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+		{% else %}
+			<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+		{% endif %}
+		</ul>
 
+		<ul class="nav navbar-nav navbar-right">
+			<li class="base"><a href = 'http://127.0.0.1:8000/' class="btn btn-default btn-lg"><span class="glyphicon glyphicon-home"></span></a></li>
+		{% if user.is_authenticated %}
+			<li class="base"><a href = "{% url 'room:company-add' %}" class="btn btn-default btn-lg">Add Company</a></li>
+		{% endif %}
+		</ul>
 
-			<ul class="nav navbar-nav">
-				<li class="active">
-					<a href="{% url 'room:index' %}">
-						<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>&nbsp; Companies
-					</a>
-				</li>
-				<li class="">
-					<a href="#">
-						<span class="glyphicon glyphicon-header" aria-hidden="true"></span>&nbsp;
-						Hostels
-					</a>
-				</li>
-			</ul>
-
-			<form class="navbar-form navbar-left" role="search" method="get" action="#">
-				<div class="form-group">
-					<input type="text" class="form-control" name="q" value="" placeholder="Enter Company Name">
-				</div>
-				<button type="button" class="btn btn-outline-primary">Search</button>
-			</form>
-
-
-			<!-- <ul class="nav navbar-nav navbar-right">
-
-				<li class="">
-					<a href="#">
-						<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
-						Logout
-					</a>
-				</li>
-			</ul> -->
-
-			<ul class="nav navbar-nav navbar-right">
-
-				<li class="">
-					<a href = 'http://127.0.0.1:8000/' class="btn btn-default btn-lg">
-						<span class="glyphicon glyphicon-home"></span>
-					</a>
-				</li>
-				<li class="">
-					<a href = "{% url 'room:company-add' %}" class="btn btn-default btn-lg">
-						<!-- <span class="glyphicon glyphicon-add"></span> -->
-						Add
-					</a>
-				</li>
-			</ul>
 		</div>
-
 	</div>
 	</nav>
 {% block body %}

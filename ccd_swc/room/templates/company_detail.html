@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block title %}
   Company Details
 {% endblock %}
@@ -9,7 +10,7 @@
 			<div class="col-sm-4 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<a href="{% url 'room:detail' company.id %}"><img src="{{ company.logo.url }}" class="img-responsive"></a>
+						<a href="{% url 'room:detail' company.id %}"><img src="{% static company.get_photo_url %}" class="img-responsive"></a>
 						<h2>Company: {{ company.name }}</h2>
 						<h2>Industry: {{ company.industry }}</h2>
             <h3><small>POC: {{ company.poc }}</small></h3>
@@ -19,7 +20,11 @@
     </div>
   </div>
 
+  {% if user.is_authenticated %}
   <button type="submit" class="btn btn-success"><a href="{% url 'room:roomadd' pk=company.pk %}" style="color:black"">Add Room</a></button>
+  <button type="submit" class="btn btn-success"><a href="{% url 'room:room_remove' pk=company.pk %}" style="color:black"">Delete Room</a></button>
+  <button type="submit" class="btn btn-success"><a href="{% url 'room:company-update' pk=company.pk %}" style="color:black"">Company Update</a></button>
+  {% endif %}
 
   <div class="jumbotron">
     <h2><a href="{% url 'room:image1' pk=company.pk %}">Brahmaputra</a></h2>

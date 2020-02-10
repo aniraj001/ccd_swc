@@ -9,4 +9,13 @@
     {{ form.as_p }}
     <input type="submit" class="btn btn-primary" value="SAVE">
   </form>
+  <button value="A-001" onclick="fun('A-001')">A-001</button>
+  <button value="A-002" onclick="fun('A-002')">A-002</button>
+  <button value="A-003" onclick="fun('A-003')">A-003</button>
+  <script>
+    function fun(s)
+    {
+       document.getElementById("id_room_no").value = s;
+    }
+  </script>
 {% endblock %}

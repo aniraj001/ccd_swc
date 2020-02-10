@@ -17,20 +17,27 @@ class DetailView(generic.DetailView):
 	template_name = 'company_detail.html'
 	model = Company
 
-class AddRoom(CreateView):
-	template_name = 'add_room.html'
-	model = Room
-	form_class = RoomForm
-	success_url = reverse_lazy('room:index')
+# class AddRoom(CreateView):
+# 	template_name = 'add_room.html'
+# 	model = Room
+# 	fields = ('company','room_no','hostel')
+# 	success_url = reverse_lazy('room:index')
+# 	def get_context_data(self,**kwargs):
+# 			context = super().get_context_data(**kwargs)
+# 			company = get_object_or_404(Company,pk=self.kwargs['pk'])
+# 			context['company'] = company.name
+# 			return context
 
 def context_obj(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	if request.method == "POST":
-		form.company = company.name
 		form = RoomForm(request.POST)
 		if form.is_valid():
 			r = form.save(commit=False)
-			r.save()
+			s = Hostel.objects.filter(name=r.hostel)
+			t = Room(company=company,hostel=s[0],room_no=r.room_no)
+			# print(r.company)
+			t.save()
 			return redirect('room:detail', pk=company.pk)
 	else:
 		form = RoomForm()
@@ -39,7 +46,7 @@ def context_obj(request,pk):
 def new(request,pk):
 	comp = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Brahmaputra")
-	t = Room(company = comp , hostel = s[0],room_no = "S-101")
+	t = Room(company = comp,hostel = s[0],room_no = "S103")
 	t.save()
 	return redirect('room:detail', pk=comp.pk)
 

@@ -1,0 +1,20 @@
+.m {
+  margin : 20px;
+  color: red;
+}
+.all {
+  color : purple;
+}
+h2 {
+  margin-left: 5px;
+  color: grey;
+}
+.list {
+  margin-bottom: 20px;
+  text-align: center;
+  color: rgb(100,90,80);
+}
+.base {
+  margin-left: 10px;
+  margin-right: 10px;
+}

@@ -10,23 +10,24 @@
   <table>
     <tr>
       {% if user.is_authenticated %}
-      <td><div class="lol"><a href="{% url 'room:room_' pk=primary %}">S-1</a></div></td>
+      <td><div><a href="{% url 'room:room_' pk=primary %}">S-1</a></div></td>
       {% else %}
-      <td><div class="lol">S-1</div></td>
+      <td><div>S-1</div></td>
       {% endif %}
-      <td><div class="lol">S-2</div></td>
-      <td><div class="lol">S-3</div></td>
+      <td><div>S-2</div></td>
+      <td><div>S-3</div></td>
     </tr>
     <tr>
-      <td><div class="lol">S-4</div></td>
-      <td><div class="lol">S-5</div></td>
-      <td><div class="lol">S-6</div></td>
+      <td><div>S-4</div></td>
+      <td><div>S-5</div></td>
+      <td><div>S-6</div></td>
     </tr>
     <tr>
-      <td><div class="lol">S-7</div></td>
-      <td><div class="lol">S-8</div></td>
-      <td><div class="lol">S-9</div></td>
+      <td><div>S-7</div></td>
+      <td><div>S-8</div></td>
+      <td><div>S-9</div></td>
     </tr>
   </table>
-  <button id = "hi">Submit</button>
+  <button>Submit</button>
+  <script type="text/javascript" src="{% static 'js/java.js' %}"></script>
 {% endblock %}

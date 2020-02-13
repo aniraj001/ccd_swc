@@ -1,55 +1,192 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>ClickBox</title>
+{% extends 'base.html' %}
+{% block title %}
+  Add Room
+{% endblock %}
 
-    <style>
-      body
-      {
-        background-color: linen;
-      }
-      .lol
-      {
-          width: 30px;
-          border: 5px solid green;
-          padding: 50px;
-          margin: 20px;
-          float :left;
-          background-color : lightgreen;
-      }
-      h1
-      {
-        color: maroon;
-        margin-left: 40px;
-      }
-      .active
-      {
-        width: 30px;
-        border: 5px solid green;
-        padding: 50px;
-        margin: 20px;
-        float :left;
-        background-color : pink;
-      }
-</style>
-  </head>
+{% block body %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input id = "sd" type="submit" class="btn btn-primary" value="SAVE">
+  </form>
+  <br>
+  <br>
+  <br>
+        <style>
+            body
+            {
+              background-color: linen;
+            }
+            .lol
+            {
+                width: 100px;
+                border: 2px solid green;
+                padding: 10px 10px 10px 10px;
+                margin: 10px 10px 10px 10px;
+                float :left;
+                background-color : lightgreen;
+                text-align:center;
+            }
+            h1
+            {
+              color: maroon;
+              margin-left: 40px;
+            }
+            .active
+            {
+              width: 100px;
+              border: 2px solid green;
+              padding: 10px 10px 10px 10px;
+              margin: 10px 10px 10px 10px;
+              float :left;
+              background-color : pink;
+              text-align:center;
+            }
+            #div
+            {
+              border: 1px dotted #000;
+              position: absolute;
+            }
+      </style>
   <body>
-      <div id = "ll" class = "lol">S-1</div>
-      <div id = "ll" class = "lol">S-2</div>
-      <div id = "ll" class = "lol">S-3</div>
-      <div id = "ll" class = "lol">S-4</div>
-      <div id = "ll" class = "lol">S-5</div>
-      <div id = "ll" class = "lol">S-6</div>
-      <div id = "ll" class = "lol">S-7</div>
-      <div id = "ll" class = "lol">S-8</div>
-      <div id = "ll" class = "lol">S-9</div>
-      <div id = "ll" class = "lol">S-10</div>
-      <div id = "ll" class = "lol">S-11</div>
-      <div id = "ll" class = "lol">S-12</div>
-
+      <div class = "lol">A-001</div>
+      <div class = "lol">A-002</div>
+      <div class = "lol">A-003</div>
+      <div class = "lol">A-004</div>
+      <div class = "lol">A-005</div>
+      <div class = "lol">A-006</div>
+      <div class = "lol">A-007</div>
+      <div class = "lol">A-008</div>
+      <div class = "lol">A-009</div>
+      <div class = "lol">A-010</div>
+      <div class = "lol">A-011</div>
+      <div class = "lol">A-012</div>
+      <div class = "lol">B-002</div>
+      <div class = "lol">B-003</div>
+      <div class = "lol">B-004</div>
+      <div class = "lol">B-001</div>
+      <div class = "lol">B-005</div>
+      <div class = "lol">B-006</div>
+      <div class = "lol">B-007</div>
+      <div class = "lol">B-008</div>
+      <div class = "lol">B-009</div>
+      <div class = "lol">B-010</div>
+      <div class = "lol">B-011</div>
+      <div class = "lol">B-012</div>
+      <div class = "lol">C-001</div>
+      <div class = "lol">C-002</div>
+      <div class = "lol">C-003</div>
+      <div class = "lol">C-004</div>
+      <div class = "lol">C-005</div>
+      <div class = "lol">C-006</div>
+      <div class = "lol">C-007</div>
+      <div class = "lol">C-008</div>
+      <div class = "lol">C-009</div>
+      <div class = "lol">C-010</div>
+      <div class = "lol">C-011</div>
+      <div class = "lol">C-012</div>
+      <div id="div" hidden></div>
+      <br>
+      <br>
+      <br>
       <button id = "hi">Submit</button>
-      <script src="{% static "js/box.js" %}"></script>
+      <script>
+        var div = document.getElementById('div'), x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+        function reCalc() { //This will restyle the div
+            var x3 = Math.min(x1,x2); //Smaller X
+            var x4 = Math.max(x1,x2); //Larger X
+            var y3 = Math.min(y1,y2); //Smaller Y
+            var y4 = Math.max(y1,y2); //Larger Y
+            div.style.left = x3 + 'px';
+            div.style.top = y3 + 'px';
+            div.style.width = x4 - x3 + 'px';
+            div.style.height = y4 - y3 + 'px';
+        }
+        onmousedown = function(e) {
+            div.hidden = 0; //Unhide the div
+            x1 = e.clientX; //Set the initial X
+            y1 = e.clientY; //Set the initial Y
 
-  </body>
-</html>
+            reCalc();
+
+        };
+        var a1;
+        onmousemove = function(e) {
+            x2 = e.clientX; //Update the current position X
+            y2 = e.clientY; //Update the current position Y
+            reCalc();
+            var rect1 = div.getBoundingClientRect();
+            for(var i=0;i<x.length;i++)
+            {
+
+              var rect2 = x[i].getBoundingClientRect();
+              var overlap = !(rect1.right < rect2.left ||
+              rect1.left > rect2.right ||
+              rect1.bottom < rect2.top ||
+              rect1.top > rect2.bottom)
+              console.log(overlap);
+                if(overlap == 1)
+                {
+                    x[i].classList.add('active');
+                    x[i].classList.remove('lol');
+
+                    /*x[i].classList.toggle('lol');*/
+                }
+                if(overlap == 0)
+                {
+                    x[i].classList.add('lol');
+                    x[i].classList.remove('active');
+
+                    /*x[i].classList.toggle('lol');*/
+                 }
+            }
+
+        };
+        onmouseup = function(e) {
+          div.hidden = 1;
+
+        };
+
+
+          var x = document.querySelectorAll(".lol");
+          /* for(var i=0;i<x.length;i++)
+          {
+              x[i].onmouseover = function()
+              {
+                  this.classList.toggle('active');
+                  this.classList.toggle('lol');
+              }
+
+          } */
+          console.log(x);
+          var rooms = [];
+
+
+
+
+          var y = document.getElementById("hi");
+          console.log(y);
+          y.onclick = function()
+          {
+              for(var i=0;i<x.length;i++)
+              {
+              if(x[i].className == 'active')
+              {
+                  rooms.push(x[i].innerHTML);
+                  x[i].classList.toggle('active');
+                  x[i].classList.toggle('lol');
+              }
+          }
+          console.log(rooms);
+          for(var i=0;i<rooms.length;i++)
+          {
+              document.getElementById("id_room_no").value = rooms[i];
+              var yy = document.getElementById("sd");
+              console.log(yy);
+              yy.click();
+          }
+          rooms = [];
+          }
+      </script>
+    </body>
+{% endblock %}

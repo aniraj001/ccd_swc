@@ -68,7 +68,7 @@ def new(request,pk):
 	return redirect('room:image1', pk=comp.pk)
 
 class ImageOneView(TemplateView):
-	template_name = 'hostel_image1.html'
+	template_name = 'clickbox.html'
 	def get_context_data(self,**kwargs):
 			context = super().get_context_data(**kwargs)
 			company = get_object_or_404(Company,pk=self.kwargs['pk'])

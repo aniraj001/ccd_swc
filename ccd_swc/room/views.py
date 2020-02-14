@@ -26,11 +26,9 @@ def search(request):
 
 @login_required
 def context_obj(request,pk):
-
 	company = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Brahmaputra")
 	ro = Room.objects.filter(company=company,hostel=s[0])
-	print(ro)
 	if request.method == "POST":
 		hostel = request.POST['hostel']
 		rooms = request.POST['roo']

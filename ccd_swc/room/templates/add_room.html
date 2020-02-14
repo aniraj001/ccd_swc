@@ -130,12 +130,12 @@
                 z[i].classList.toggle("occupied");
          }
        }
+       var sub = [];
        var mx = 0;
        var ff = document.getElementById("man");
        var a5;
        var div = document.getElementById('div'), x1 = 0, y1 = 0, x2 = 0, y2 = 0;
-       function reCalc()
-       {
+       function reCalc(){
            var x3 = Math.min(x1,x2);
            var x4 = Math.max(x1,x2);
            var y3 = Math.min(y1,y2);
@@ -146,10 +146,8 @@
            div.style.height = y4 - y3 + 'px';
        }
        var aa = 0;
-       ff.onmousedown = function(e)
-       {
+       ff.onmousedown = function(e){
            a5 = 1;
-           // div.style.borderWidth = "1px";
            div.hidden = 0;
            x1 = e.clientX;
            y1 = e.clientY;
@@ -157,8 +155,7 @@
            aa = 1;
        };
        var a1;
-       ff.onmousemove = function(e)
-       {
+       ff.onmousemove = function(e){
            if(aa != 1) return;
            div.style.borderWidth = "1px";
            x2 = e.clientX;
@@ -167,58 +164,59 @@
            var rect1 = div.getBoundingClientRect();
            for(var i=0;i<x.length;i++)
            {
-             if(a5 == 1)
-             {
+             if(a5 == 1){
                    var rect2 = x[i].getBoundingClientRect();
                    var overlap = !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom)
 
-                   if(overlap == 1)
-                   {
-                       x[i].classList.add('active');
-                       x[i].classList.remove('lol');
+                   if(overlap == 1){
+                       if(!sub.includes(x[i].innerHTML)){
+                         x[i].classList.add('active');
+                         x[i].classList.remove('lol');
+                       }
+                       else {
+                         x[i].classList.add('lol');
+                         x[i].classList.remove('active');
+                       }
                    }
-                   if(overlap == 0)
-                   {
+                   if(overlap == 0){
+                     if(!sub.includes(x[i].innerHTML)){
                        x[i].classList.add('lol');
                        x[i].classList.remove('active');
+                     }
+                     else {
+                       x[i].classList.add('active');
+                       x[i].classList.remove('lol');
+                     }
                    }
              }
            }
        };
-       onmouseup = function(e)
-       {
+       onmouseup = function(e){
          aa=0;
          div.style.borderWidth = "0px";
          a5 = 0;
        };
-
 
          var x = document.querySelectorAll(".lol");
          var rooms = [];
          var y = document.getElementById("hi");
          console.log(y);
          var lop = "";
-         y.onclick = function()
-         {
-            for(var i=0;i<x.length;i++)
-            {
-               if(x[i].className == 'active')
-               {
+         y.onclick = function(){
+            rooms = [];
+            for(var i=0;i<x.length;i++){
+               if(x[i].className == 'active'){
                    rooms.push(x[i].innerHTML);
-                   x[i].classList.toggle('active');
-                   x[i].classList.toggle('lol');
+                   sub.push(x[i].innerHTML);
                }
             }
            console.log(rooms);
-           for(var i=0;i<rooms.length;i++)
-           {
-               lop = lop+rooms[i]+" ";
-           }
-           console.log(lop);
-           rooms = [];
          }
 
        $(document).on('submit','#newuserform',function(e){
+         for(var i=0;i<rooms.length;i++){
+             lop = lop+rooms[i]+" ";
+         }
          e.preventDefault();
          $.ajax({
            type:'POST',
@@ -229,7 +227,6 @@
              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
            },
            success:function(){
-                alert("You will now be redirected.");
                 window.location = "{% url 'room:detail' pk=primary %}";
            }
          })

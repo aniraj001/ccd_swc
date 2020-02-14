@@ -25,14 +25,13 @@ def search(request):
     return render(request, 'company_list.html', {'results':results})
 
 @login_required
-def context_obj(request,pk):
+def add_room(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Brahmaputra")
 	ro = Room.objects.filter(company=company,hostel=s[0])
 	if request.method == "POST":
 		hostel = request.POST['hostel']
 		rooms = request.POST['roo']
-		print(rooms)
 		s = Hostel.objects.filter(name=hostel)
 		l = rooms.split()
 		for room in l:
@@ -60,17 +59,6 @@ def remove_room(request,pk):
 		form = RoomForm()
 	return render(request,'room_delete.html',context={'form':form})
 
-@login_required
-def new(request,pk):
-	comp = get_object_or_404(Company,pk=pk)
-	s = Hostel.objects.filter(name="Brahmaputra")
-	if Room.objects.filter(company=comp,hostel = s[0],room_no = "S-1").exists():
-            pass
-	else:
-		t = Room(company = comp,hostel = s[0],room_no = "S-1")
-		t.save()
-	return redirect('room:image1', pk=comp.pk)
-
 class ImageOneView(TemplateView):
 	template_name = 'clickbox.html'
 	def get_context_data(self,**kwargs):
@@ -83,9 +71,6 @@ class ImageOneView(TemplateView):
 			context['primary'] = company.pk
 			context['rooms'] = rooms
 			return context
-
-class ImageTwoView(TemplateView):
-	template_name = 'hostel_image2.html'
 
 class CompanyCreate(LoginRequiredMixin,CreateView):
 	login_url = '/login/'

@@ -26,18 +26,24 @@ def search(request):
 
 @login_required
 def context_obj(request,pk):
+
 	company = get_object_or_404(Company,pk=pk)
+	s = Hostel.objects.filter(name="Brahmaputra")
+	ro = Room.objects.filter(company=company,hostel=s[0])
+	print(ro)
 	if request.method == "POST":
-		form = RoomForm(request.POST)
-		if form.is_valid():
-			r = form.save(commit=False)
-			s = Hostel.objects.filter(name=r.hostel)
-			t = Room(company=company,hostel=s[0],room_no=r.room_no)
-			t.save()
-			return redirect('room:detail', pk=company.pk)
+		hostel = request.POST['hostel']
+		rooms = request.POST['roo']
+		print(rooms)
+		s = Hostel.objects.filter(name=hostel)
+		l = rooms.split()
+		for room in l:
+			Room.objects.create(company=company,hostel=s[0],room_no=room)
+			print(room)
+		return redirect('room:detail', pk=company.pk)
 	else:
 		form = RoomForm()
-	return render(request,'add_room.html',{'form':form})
+	return render(request,'add_room.html',{'form':form,'primary':pk,'rooms':ro})
 
 @login_required
 def remove_room(request,pk):
@@ -72,9 +78,12 @@ class ImageOneView(TemplateView):
 	def get_context_data(self,**kwargs):
 			context = super().get_context_data(**kwargs)
 			company = get_object_or_404(Company,pk=self.kwargs['pk'])
+			s = Hostel.objects.filter(name="Brahmaputra")
+			rooms = Room.objects.filter(company=company,hostel=s[0])
 			context['hostel'] = "Brahmaputra"
 			context['company'] = company.name
 			context['primary'] = company.pk
+			context['rooms'] = rooms
 			return context
 
 class ImageTwoView(TemplateView):

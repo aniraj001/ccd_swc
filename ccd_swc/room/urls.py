@@ -7,8 +7,6 @@ urlpatterns = [
 
     path('', views.search, name='index'),
 
-    path('<int:pk>/brahmaputra', views.ImageOneView.as_view(), name='image1'),
-
 	path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 
 	path('add_company/', views.CompanyCreate.as_view(), name='company-add'),
@@ -20,5 +18,9 @@ urlpatterns = [
     path('<int:pk>/delete_room/', views.remove_room, name='room_remove'),
 
     path('<int:pk>/add_room',views.add_room,name='roomadd'),
+
+    path('<int:pk>/delete_room1/', views.remove_room1, name='room_remove1'),
+
+    path('<int:pk>/add_room1',views.add_room1,name='roomadd1'),
 
 ]

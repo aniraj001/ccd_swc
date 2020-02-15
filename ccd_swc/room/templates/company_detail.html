@@ -13,38 +13,34 @@
 						<h2 class="place">Company: {{ company.name }}</h2>
 						<h2>Industry: {{ company.industry }}</h2>
             <h3><small>POC: {{ company.poc }}</small></h3>
+            {% if user.is_authenticated %}
+            <input onclick = "location.href='{% url 'room:company-update' pk=company.pk %}'" type="button" class="btn btn-warning" value="Update">
+            {% endif %}
 					</div>
 				</div>
 			</div>
     </div>
   </div>
 
-  {% if user.is_authenticated %}
-  <input onclick="location.href='{% url 'room:roomadd' pk=company.pk %}'" type="button" class="btn btn-success" value="Add Room">
-  <input onclick="location.href='{% url 'room:room_remove' pk=company.pk %}'" type="button" class="btn btn-success" value="Delete Room">
-  <input onclick = "location.href='{% url 'room:company-update' pk=company.pk %}'" type="button" class="btn btn-success" value="Company Update">
-  {% endif %}
-
   <div class="jumbotron">
     <h2>Brahmaputra</h2>
-    <ul>
-      {% for room in company.rooms.all %}
-        {% if room.hostel.name == "Brahmaputra" %}
-        <h3><li>{{ room.room_no }}</li></h3>
-        {% endif %}
-      {% endfor %}
-    </ul>
+    {% if user.is_authenticated %}
+    <input onclick="location.href='{% url 'room:roomadd' pk=company.pk %}'" type="button" class="btn btn-primary" value="Add Room">
+    <input onclick="location.href='{% url 'room:room_remove' pk=company.pk %}'" type="button" class="btn btn-danger" value="Delete Room">
+    {% else %}
+    <input onclick="location.href='{% url 'room:roomadd' pk=company.pk %}'" type="button" class="btn btn-primary" value="Room List">
+    {% endif %}
   </div>
 
   <div class="jumbotron">
     <h2>Lohit</h2>
-    <ul>
-      {% for room in company.rooms.all %}
-        {% if room.hostel.name == "Lohit" %}
-        <h3><li>{{ room.room_no }}</li></h3>
-        {% endif %}
-      {% endfor %}
-    </ul>
+    {% if user.is_authenticated %}
+    <input onclick="location.href='{% url 'room:roomadd1' pk=company.pk %}'" type="button" class="btn btn-primary" value="Add Room">
+    <input onclick="location.href='{% url 'room:room_remove1' pk=company.pk %}'" type="button" class="btn btn-danger" value="Delete Room">
+    {% else %}
+    <input onclick="location.href='{% url 'room:roomadd1' pk=company.pk %}'" type="button" class="btn btn-primary" value="Room List">
+    {% endif %}
+
   </div>
 
 {% endblock %}

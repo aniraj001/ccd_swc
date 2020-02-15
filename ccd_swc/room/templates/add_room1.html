@@ -50,7 +50,7 @@
     <br>
     <br>
     <br>
-    {% if user.is_authenticated%}
+    {% if user.is_authenticated %}
     <input id = "sd" type="submit" class="btn btn-success" value="Submit">
     {% endif %}
   </form>
@@ -221,9 +221,9 @@
          e.preventDefault();
          $.ajax({
            type:'POST',
-           url:"{% url 'room:roomadd' pk=primary %}",
+           url:"{% url 'room:roomadd1' pk=primary %}",
            data:{
-             hostel:"Brahmaputra",
+             hostel:"Lohit",
              roo:lop,
              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
            },

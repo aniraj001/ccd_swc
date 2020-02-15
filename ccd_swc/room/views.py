@@ -24,19 +24,16 @@ def search(request):
        results = Company.objects.all()
     return render(request, 'company_list.html', {'results':results})
 
-@login_required
 def add_room(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Brahmaputra")
 	ro = Room.objects.filter(company=company,hostel=s[0])
+
 	if request.method == "POST":
-		hostel = request.POST['hostel']
 		rooms = request.POST['roo']
-		s = Hostel.objects.filter(name=hostel)
 		l = rooms.split()
 		for room in l:
 			Room.objects.create(company=company,hostel=s[0],room_no=room)
-			print(room)
 		return redirect('room:detail', pk=company.pk)
 	else:
 		form = RoomForm()
@@ -47,36 +44,47 @@ def remove_room(request,pk):
 	comp = get_object_or_404(Company,pk=pk)
 	if request.method == 'POST':
 		form = RoomForm(request.POST)
-		h = request.POST.get('hostel')
 		room = request.POST.get('room_no')
-		if h =="1":
-			k = Hostel.objects.filter(name="Brahmaputra")
-		else:
-			k = Hostel.objects.filter(name="Lohit")
+		k = Hostel.objects.filter(name="Brahmaputra")
 		Room.objects.filter(company=comp,hostel=k[0],room_no=room).delete()
 		return redirect('room:detail', pk=comp.pk)
 	else:
 		form = RoomForm()
 	return render(request,'room_delete.html',context={'form':form})
 
-class ImageOneView(TemplateView):
-	template_name = 'clickbox.html'
-	def get_context_data(self,**kwargs):
-			context = super().get_context_data(**kwargs)
-			company = get_object_or_404(Company,pk=self.kwargs['pk'])
-			s = Hostel.objects.filter(name="Brahmaputra")
-			rooms = Room.objects.filter(company=company,hostel=s[0])
-			context['hostel'] = "Brahmaputra"
-			context['company'] = company.name
-			context['primary'] = company.pk
-			context['rooms'] = rooms
-			return context
+def add_room1(request,pk):
+	company = get_object_or_404(Company,pk=pk)
+	s = Hostel.objects.filter(name="Lohit")
+	ro = Room.objects.filter(company=company,hostel=s[0])
+
+	if request.method == "POST":
+		rooms = request.POST['roo']
+		l = rooms.split()
+		for room in l:
+			Room.objects.create(company=company,hostel=s[0],room_no=room)
+		return redirect('room:detail', pk=company.pk)
+	else:
+		form = RoomForm()
+	return render(request,'add_room1.html',{'form':form,'primary':pk,'rooms':ro})
+
+@login_required
+def remove_room1(request,pk):
+	comp = get_object_or_404(Company,pk=pk)
+	if request.method == 'POST':
+		form = RoomForm(request.POST)
+		room = request.POST.get('room_no')
+		k = Hostel.objects.filter(name="Lohit")
+		Room.objects.filter(company=comp,hostel=k[0],room_no=room).delete()
+		return redirect('room:detail', pk=comp.pk)
+	else:
+		form = RoomForm()
+	return render(request,'room_delete1.html',context={'form':form})
 
 class CompanyCreate(LoginRequiredMixin,CreateView):
 	login_url = '/login/'
 	template_name = 'companycreate.html'
 	model = Company
-	fields = ('name', 'industry', 'poc','logo')
+	fields = ('name', 'industry', 'poc')
 	success_url = reverse_lazy('room:index')
 
 class CompanyUpdate(LoginRequiredMixin,UpdateView):

@@ -5,11 +5,10 @@ from django.contrib.auth.models import User
 class RoomForm(forms.ModelForm):
     class Meta:
         model = Room
-        fields = ('hostel', 'room_no')
+        fields = ('room_no',)
 
     widgets = {
-            'hostel': forms.TextInput(attrs={'class': 'textinputclass'}),
-            'room_no': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
+            'room_no': forms.Textarea(attrs={'class': 'form-control editable medium-editor-textarea postcontent'}),
         }
 
 

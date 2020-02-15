@@ -7,14 +7,34 @@
 
   <form class="navbar-form navbar-left" role="search" method="get" action=".">
     <div class="form-group">
-      <input type="text" class="form-control" name="q" placeholder="Enter Company Name">
+      <input type="text" class="form-control" name="q" id="country" placeholder="Enter Company Name">
+      <div id="country-list"></div>
     </div>
     <button type="submit" value="{{query|escape}}" class="btn btn-outline-primary">Search</button>
   </form>
-
 {% endblock %}
 
 {% block body %}
+  <script>
+    $(document).ready(function(){
+      $('#country').keyup(function(){
+        var query = $(this).val();
+        if(query!=''){
+          $.ajax({
+            type:'POST',
+            url:"{% url 'room:index' %}",
+            data:{
+              query:query
+            },
+            success:function(data){
+                 $('#country-list').fadeIn();
+                 $('#country-list').html(data);
+            }
+          })
+        }
+      });
+    });
+  </script>
   <h1 class="list"><strong>Company List</strong></h1>
   <table border="1">
     <thead>

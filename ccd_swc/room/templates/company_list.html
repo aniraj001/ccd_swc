@@ -6,6 +6,7 @@
 <div class="collapse navbar-collapse" id="topNavBar">
 
   <form class="navbar-form navbar-left" role="search" method="get" action=".">
+    {% csrf_token %}
     <div class="form-group">
       <input type="text" class="form-control" name="q" id="country" placeholder="Enter Company Name">
       <div id="country-list"></div>
@@ -32,7 +33,15 @@
             }
           })
         }
+        else {
+          $('#country-list').fadeOut();
+          $('#country-list').html("");
+        }
       });
+      $(document).on('click','li',function(){
+        $('#country').val($(this).text());
+        $('#country-list').fadeOut();
+      })
     });
   </script>
   <h1 class="list"><strong>Company List</strong></h1>
@@ -46,7 +55,7 @@
       </tr>
     </thead>
     <tbody>
-    {% for company in results %}
+    {% for company in data %}
       <tr>
         <td><a href="{% url 'room:detail' company.id %}">{{ company.name }}</a></td>
         {% if user.is_authenticated %}

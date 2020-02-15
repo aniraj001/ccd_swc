@@ -210,8 +210,18 @@
                    rooms.push(x[i].innerHTML);
                    sub.push(x[i].innerHTML);
                }
+               else {
+                 if(sub.includes(x[i].innerHTML)){
+                   for(var j=sub.length-1;j>=0;j--){
+                     if(sub[j] == x[i].innerHTML){
+                       sub.splice(j,1);
+                     }
+                   }
+                 }
+               }
             }
            console.log(rooms);
+           console.log(sub);
          }
 
        $(document).on('submit','#newuserform',function(e){

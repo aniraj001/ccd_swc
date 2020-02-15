@@ -7,6 +7,8 @@ urlpatterns = [
 
     path('', views.search, name='index'),
 
+    path('', views.searching, name='index1'),
+
 	path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 
 	path('add_company/', views.CompanyCreate.as_view(), name='company-add'),

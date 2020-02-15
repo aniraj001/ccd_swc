@@ -16,34 +16,34 @@
 {% endblock %}
 
 {% block body %}
-  <script>
-    $(document).ready(function(){
-      $('#country').keyup(function(){
-        var query = $(this).val();
-        if(query!=''){
-          $.ajax({
-            type:'POST',
-            url:"{% url 'room:index' %}",
-            data:{
-              query:query
-            },
-            success:function(data){
-                 $('#country-list').fadeIn();
-                 $('#country-list').html(data);
-            }
-          })
-        }
-        else {
-          $('#country-list').fadeOut();
-          $('#country-list').html("");
-        }
-      });
-      $(document).on('click','li',function(){
-        $('#country').val($(this).text());
+<!-- <script>
+  $(document).ready(function(){
+    $('#country').keyup(function(){
+      var query = $(this).val();
+      if(query!=''){
+        $.ajax({
+          type:'POST',
+          url:"{% url 'room:index1' %}",
+          data:{
+            query:query
+          },
+          success:function(data){
+               $('#country-list').fadeIn();
+               $('#country-list').html(data);
+          }
+        })
+      }
+      else {
         $('#country-list').fadeOut();
-      })
+        $('#country-list').html("");
+      }
     });
-  </script>
+    $(document).on('click','li',function(){
+      $('#country').val($(this).text());
+      $('#country-list').fadeOut();
+    })
+  });
+</script> -->
   <h1 class="list"><strong>Company List</strong></h1>
   <table border="1">
     <thead>

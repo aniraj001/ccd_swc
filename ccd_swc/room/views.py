@@ -17,17 +17,19 @@ class DetailView(generic.DetailView):
 	model = Company
 
 def search(request):
-    # query = request.GET.get('q','')
+	query = request.GET.get('q','')
+	if query:
+		results = Company.objects.filter(name=query)
+	else:
+		results = Company.objects.all()
+	return render(request, 'company_list.html', {'data':results})
+
+def searching(request):
 	if request.method == 'POST':
 		query = request.POST['query']
 		data = Company.objects.filter(name__startswith=query)
 	else:
 		data = Company.objects.all()
-    # if query:
-    #         results = Company.objects.filter(name=query)
-    # else:
-    #    results = Company.objects.all()
-    # return render(request, 'company_list.html', {'results':results})
 	return render(request, 'company_list.html', {'data':data})
 
 def add_room(request,pk):

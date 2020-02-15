@@ -1,8 +1,8 @@
-
 .feel {
   font-size: 50px;
 }
-.header{
+
+/* .header{
 	background: url("https://i.pinimg.com/originals/b5/36/8d/b5368d3c119780162cde9deabc0663a9.jpg") center center fixed;
 	color: #FFF;
 	height: 55px;
@@ -54,59 +54,4 @@
 		margin:10px 0;
 		background:#36C;
 		color:#FFF;
-}
-body
-{
-  background-color: linen;
-  -webkit-user-select:none;
-  -webkit-touch-callout:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
-}
-.lol
-{
-    width: 100px;
-    border: 2px solid grey;
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
-    float : left;
-    background-color : white;
-    text-align : center;
-}
-h1
-{
-  color: maroon;
-  margin-left: 40px;
-}
-.active
-{
-  width: 100px;
-  border: 2px solid green;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
-  float :left;
-  background-color : pink;
-  text-align:center;
-}
-#div
-{
-  border: 1px dotted #000;
-  position: absolute;
-}
-#man
-{
-  border:1px dotted red;
-}
-.occupied {
-  width: 100px;
-  border: 2px solid green;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
-  float :left;
-  background-color : lightblue;
-  text-align:center;
-}
-#hi {
-  float: right;
-}
+} */

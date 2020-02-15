@@ -8,7 +8,7 @@ class RoomForm(forms.ModelForm):
         fields = ('room_no',)
 
     widgets = {
-            'room_no': forms.Textarea(attrs={'class': 'form-control editable medium-editor-textarea postcontent'}),
+            'room_no': forms.Textarea(attrs={'class': 'form-control editable medium-editor-textarea postcontent',}),
         }
 
 class FilebabyForm(forms.ModelForm):

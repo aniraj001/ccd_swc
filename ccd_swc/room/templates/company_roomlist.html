@@ -6,9 +6,9 @@
 {% load static %}
 
 {% block body %}
-  <link rel="stylesheet" href="{% static 'style.css' %}">
   <form id="newuserform">
     {% csrf_token %}
+    <br> <br> <br><br>
     <div class="container" id = "man">
       <div id="A-001" class = "lol">A-001</div>
       <div id="A-002" class = "lol">A-002</div>
@@ -52,6 +52,63 @@
     <br>
     <br>
   </form>
+  <style>
+    body
+    {
+      background-color: linen;
+      -webkit-user-select:none;
+      -webkit-touch-callout:none;
+      -moz-user-select:none;
+      -ms-user-select:none;
+      user-select:none;
+    }
+    .lol
+    {
+        width: 100px;
+        border: 2px solid grey;
+        padding: 10px 10px 10px 10px;
+        margin: 10px 10px 10px 10px;
+        float : left;
+        background-color : white;
+        text-align : center;
+    }
+    h1
+    {
+      color: maroon;
+      margin-left: 40px;
+    }
+    .active
+    {
+      width: 100px;
+      border: 2px solid green;
+      padding: 10px 10px 10px 10px;
+      margin: 10px 10px 10px 10px;
+      float :left;
+      background-color : pink;
+      text-align:center;
+    }
+    #div
+    {
+      border: 1px dotted #000;
+      position: absolute;
+    }
+    #man
+    {
+      border:1px dotted red;
+    }
+    .occupied {
+      width: 100px;
+      border: 2px solid green;
+      padding: 10px 10px 10px 10px;
+      margin: 10px 10px 10px 10px;
+      float :left;
+      background-color : lightblue;
+      text-align:center;
+    }
+    #hi {
+      float: right;
+    }
+  </style>
 
   <div id = 'room-numbers'>{% for room in roomlist %}{{room.room_no}} {{room.company.name}} {% endfor %}</div>
 

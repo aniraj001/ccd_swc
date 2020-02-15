@@ -1,60 +1,152 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-	<meta charset="UTF-8">
-	<title>
+<meta charset="UTF-8">
+<title>
     {% block title %}
     {% endblock %}
   </title>
-	{% load static %}
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Petit+Formal+Script&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="{% static 'style.css' %}">
-	{% block header %}
-	{% endblock %}
+
+{% load staticfiles %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<section class = "header">
-		<div class = "overlay">
-			<div class = "row">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target= "#bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						<div class="navlogo col-xl-1"><a class="navbar-brand" href="{% url 'room:index'  %}">CCD Room Allotment</a></div>
-						</div>
+<style>
 
-		{% block navigation %}
-		{% endblock %}
+.header{
 
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						  <div class="col-xl-8">
-								<ul class="nav navbar-nav navbar-right">
-									{% if user.is_authenticated %}
-										<li class="base"><a href = "{% url 'room:company-add' %}">Add Company</a></li>
-									{% endif %}
-									{% if user.is_authenticated %}
-										<li><a href="{% url 'logout' %}">Logout</a></li>
-									{% else %}
-										<li><a href="{% url 'login' %}">Login</a></li>
-									{% endif %}
-										<li class="base"><a href = 'http://127.0.0.1:8000/'><span class="glyphicon glyphicon-home"></span></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</div>
-	</section>
+/*color: #FFF;*/
+height: 55px;
+position: relative;
+background-size: cover;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+-msn-background-size: cover;
+}
+.header .overlay{
+
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+
+.header .navbar-default {
+background-color:transparent !important;
+border-color:transparent;
+background-image:none;
+box-shadow:none;
+}
+.header .navbar-default .navbar-brand{
+font-size: 30px;
+font-weight: bold;
+color: black;
+}
+
+.header .navbar-default .navbar-nav>li>a {
+ font-size:22px;
+ color:black;
+ font-weight:700;
+}
+.header .navbar-default .navbar-nav>li:hover a{
+color: brown;
+font-weight:700;
+border-bottom: 2px solid brown;
+}
+#ff:hover {
+color: brown;
+font-weight:700;
+
+}
+
+
+#bs-example-navbar-collapse-1
+{
+
+border-radius: 10px;
+margin-left: 10px;
+margin-right: 10px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding-left: 10px;
+padding-bottom: 2px;
+padding-top: 2px;
+padding-right: 10px;
+position:relative;
+}
+.navbar-collapse.collapse {
+  display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: -15px !important;
+}
+
+.navbar-right {
+  float: right!important;
+}
+
+
+
+
+</style>
+<section class = "header">
+<div class = "overlay">
+<div class = "row">
+<nav class="navbar navbar-default navbar-static-top">
+<div class="container-fluid">
+
+
+
+{% block navigation %}
+{% endblock %}
+
+<div class="navbar navbar-default navbar-static-top" id="bs-example-navbar-collapse-1">
+<div class="navbar-header">
+
+
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+
+</button>
+<div class="navlogo col-xl-1">
+<a class="navbar-brand" id = "ff" href="{% url 'room:index'  %}">CCD Room Allotment</a>
+</div>
+</div>
+ <div class="col-xl-8">
+<ul class="nav navbar-nav navbar-right">
+{% if user.is_authenticated %}
+<li class="base"><a href = "{% url 'room:company-add' %}">Add Company</a></li>
+{% endif %}
+{% if user.is_authenticated %}
+<li><a href="{% url 'logout' %}">Logout</a></li>
+{% else %}
+<li><a href="{% url 'login' %}">Login</a></li>
+{% endif %}
+<li class="base"><a href = 'http://127.0.0.1:8000/'><span class="glyphicon glyphicon-home"></span></a></li>
+
+</ul>
+</div>
+</div>
+</div>
+</nav>
+</div>
+</div>
+</section>
+
 {% block body %}
 {% endblock %}
 

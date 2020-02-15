@@ -1,4 +1,4 @@
-var r = document.getElementById("room-numbers").innerHTML;
+       var r = document.getElementById("room-numbers").innerHTML;
        document.getElementById("room-numbers").style.display = "none";
        var lr = r.split(" ");
        var z = document.querySelectorAll(".lol");

@@ -14,42 +14,104 @@
 	<link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 </head>
 <body>
+<style>
+
+.header{
+	background: url("https://i.pinimg.com/originals/b5/36/8d/b5368d3c119780162cde9deabc0663a9.jpg") center center fixed;
+	color: #FFF;
+	height: 55px;
+	position: relative;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-msn-background-size: cover;
+}
+.header .overlay{
+	background: rgba(100, 100, 100, 0.58);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+.header .navbar-default {
+background-color:transparent !important;
+border-color:transparent;
+background-image:none;
+box-shadow:none;
+}
+.header .navbar-default .navbar-brand{
+	font-size: 30px;
+	font-weight: bold;
+	color: #FFF;
+}
+
+.header .navbar-default .navbar-nav>li>a {
+ font-size:20px;
+ color:#fff;
+	border-bottom: 1px solid transparent
+}
+.header .navbar-default .navbar-nav>li:hover a{
+	color: rgb(255,120,120);
+	 border-bottom: 1px solid #FFF
+}
+
+
+.header .navbar-toggle {
+		margin:10px 0;
+		background:#36C;
+		color:#FFF;
+}
+
+	</style>
+	<section class = "header">
+	<div class = "overlay">
+	<div class = "row">
 	<nav class="navbar navbar-default">
 	<div class="container-fluid">
 
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target= "#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
+
 			</button>
+			<div class="navlogo col-xl-1">
 			<a class="navbar-brand" href="{% url 'room:index'  %}">CCD Room Allotment</a>
+			</div>
 		</div>
 
 		{% block navigation %}
 		{% endblock %}
 
-		<ul class="nav navbar-nav">
-		{% if user.is_authenticated %}
-			<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-		{% else %}
-			<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-		{% endif %}
-		</ul>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <div class="col-xl-8">
+			<ul class="nav navbar-nav navbar-right">
+				{% if user.is_authenticated %}
+					<li class="base"><a href = "{% url 'room:company-add' %}">Add Company</a></li>
+				{% endif %}
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'logout' %}">Logout</a></li>
+				{% else %}
+					<li><a href="{% url 'login' %}">Login</a></li>
+				{% endif %}
+					<li class="base"><a href = 'http://127.0.0.1:8000/'><span class="glyphicon glyphicon-home"></span></a></li>
 
-		<ul class="nav navbar-nav navbar-right">
-			<li class="base"><a href = 'http://127.0.0.1:8000/' class="btn btn-default btn-lg"><span class="glyphicon glyphicon-home"></span></a></li>
-		{% if user.is_authenticated %}
-			<li class="base"><a href = "{% url 'room:company-add' %}" class="btn btn-default btn-lg">Add Company</a></li>
-		{% endif %}
-		</ul>
-
+			</ul>
+			</div>
 		</div>
-	</div>
+		</div>
 	</nav>
+	</div>
+</div>
+</section>
 {% block body %}
 {% endblock %}
 

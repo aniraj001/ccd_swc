@@ -35,7 +35,7 @@ def searching(request):
 def add_room(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Brahmaputra")
-	ro = Room.objects.filter(company=company,hostel=s[0])
+	ro = Room.objects.filter(hostel=s[0])
 
 	if request.method == "POST":
 		rooms = request.POST['roo']

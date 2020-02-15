@@ -1,0 +1,112 @@
+
+.feel {
+  font-size: 50px;
+}
+.header{
+	background: url("https://i.pinimg.com/originals/b5/36/8d/b5368d3c119780162cde9deabc0663a9.jpg") center center fixed;
+	color: #FFF;
+	height: 55px;
+	position: relative;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-msn-background-size: cover;
+}
+
+.here {
+  font-size: 17px;
+}
+.header .overlay{
+	background: rgba(100, 100, 100, 0.58);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.header .navbar-default {
+  background-color:transparent !important;
+  border-color:transparent;
+  background-image:none;
+  box-shadow:none;
+}
+
+.header .navbar-default .navbar-brand{
+	font-size: 30px;
+	font-weight: bold;
+	color: #FFF;
+}
+
+.header .navbar-default .navbar-nav>li>a {
+  font-size:20px;
+  color:#fff;
+	border-bottom: 1px solid transparent
+}
+
+.header .navbar-default .navbar-nav>li:hover a{
+  color: rgb(255,120,120);
+  border-bottom: 1px solid #FFF
+}
+
+.header .navbar-toggle {
+		margin:10px 0;
+		background:#36C;
+		color:#FFF;
+}
+body
+{
+  background-color: linen;
+  -webkit-user-select:none;
+  -webkit-touch-callout:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+.lol
+{
+    width: 100px;
+    border: 2px solid grey;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    float : left;
+    background-color : white;
+    text-align : center;
+}
+h1
+{
+  color: maroon;
+  margin-left: 40px;
+}
+.active
+{
+  width: 100px;
+  border: 2px solid green;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+  float :left;
+  background-color : pink;
+  text-align:center;
+}
+#div
+{
+  border: 1px dotted #000;
+  position: absolute;
+}
+#man
+{
+  border:1px dotted red;
+}
+.occupied {
+  width: 100px;
+  border: 2px solid green;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+  float :left;
+  background-color : lightblue;
+  text-align:center;
+}
+#hi {
+  float: right;
+}

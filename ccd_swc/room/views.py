@@ -11,10 +11,53 @@ from .forms import RoomForm, FilebabyForm
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
+from .resources import RoomResource, CompanyResource, HostelResource
+
+def export_room(request):
+	room_resource = RoomResource()
+	dataset = room_resource.export()
+	response = HttpResponse(dataset.csv, content_type='text/csv')
+	response['Content-Disposition'] = 'attachment; filename="rooms.csv"'
+	return response
+
+def export_company(request):
+	company_resource = CompanyResource()
+	dataset = company_resource.export()
+	response = HttpResponse(dataset.csv, content_type='text/csv')
+	response['Content-Disposition'] = 'attachment; filename="companies.csv"'
+	return response
+
+def export_hostel(request):
+	hostel_resource = HostelResource()
+	dataset = hostel_resource.export()
+	response = HttpResponse(dataset.csv, content_type='text/csv')
+	response['Content-Disposition'] = 'attachment; filename="hostels.csv"'
+	return response
 
 class DetailView(generic.DetailView):
 	template_name = 'company_detail.html'
 	model = Company
+
+def addrooms_delete(request):
+	results = Company.objects.all()
+	if request.method == 'POST':
+		Room.objects.all().delete()
+		return render(request,'company_list.html',{'data':results})
+	else:
+		return render(request,'allrooms_confirm_delete.html')
+
+def room_list(request,pk):
+	company = get_object_or_404(Company,pk=pk)
+	s = Hostel.objects.filter(name="Brahmaputra")
+	ro = Room.objects.filter(hostel=s[0])
+	return render(request,'company_roomlist.html',{'roomlist':ro})
+
+def room_list1(request,pk):
+	company = get_object_or_404(Company,pk=pk)
+	s = Hostel.objects.filter(name="Lohit")
+	ro = Room.objects.filter(hostel=s[0])
+	return render(request,'company_roomlist.html',{'roomlist':ro})
 
 def search(request):
 	query = request.GET.get('q','')
@@ -63,7 +106,7 @@ def remove_room(request,pk):
 def add_room1(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Lohit")
-	ro = Room.objects.filter(company=company,hostel=s[0])
+	ro = Room.objects.filter(hostel=s[0])
 
 	if request.method == "POST":
 		rooms = request.POST['roo']

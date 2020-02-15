@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_DIR = os.path.join(BASE_DIR,"static")
-MEDIA_DIR = os.path.join(BASE_DIR,"static/media")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'room',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -117,20 +117,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+STATICFILES_DIRS = [STATIC_DIR,]
 STATIC_URL = '/static/'
 
 INTERNAL_IPS = ['127.0.0.1']
 
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
-
-MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = '/room'

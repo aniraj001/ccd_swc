@@ -1,14 +1,16 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>HOME</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "style.css" %}">
   </head>
   <body>
     <div class="jumbotron">
-      <h1><strong>CCD PORTAL</strong></h1>
-      <a href="{% url 'room:index' %}">CCD Room Allotment</a>
+      <h1 class="feel"><strong>CCD PORTAL</strong></h1>
+      <a style="padding:0px 0px 0px 40px;" href="{% url 'room:index' %}">CCD Room Allotment</a>
     </div>
 
   </body>

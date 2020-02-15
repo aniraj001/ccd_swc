@@ -5,11 +5,21 @@ app_name = 'room'
 
 urlpatterns = [
 
+    path('room/', views.export_room, name='export_room'),
+
+    path('company/', views.export_company, name='export_company'),
+
+    path('hostel/', views.export_hostel, name='export_hostel'),
+
     path('', views.search, name='index'),
 
     path('', views.searching, name='index1'),
 
 	path('<int:pk>/', views.DetailView.as_view(), name='detail'),
+
+    path('<int:pk>/roomlist',views.room_list,name='roomlist'),
+
+    path('<int:pk>/roomlist1',views.room_list1,name='roomlist1'),
 
 	path('add_company/', views.CompanyCreate.as_view(), name='company-add'),
 
@@ -24,5 +34,7 @@ urlpatterns = [
     path('<int:pk>/delete_room1/', views.remove_room1, name='room_remove1'),
 
     path('<int:pk>/add_room1',views.add_room1,name='roomadd1'),
+
+    path('deleteall/',views.addrooms_delete,name='rooms_delete'),
 
 ]

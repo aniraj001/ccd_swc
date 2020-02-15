@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
 {% block title %} CCD Room Allotment {% endblock %}
 
 {% block navigation %}
@@ -16,6 +16,16 @@
 {% endblock %}
 
 {% block body %}
+
+<style>
+  .padd {
+    margin: 30px 40px;
+  }
+  .pad {
+    margin: 0px 0px 0px 40px;
+  }
+</style>
+
 <!-- <script>
   $(document).ready(function(){
     $('#country').keyup(function(){
@@ -45,7 +55,7 @@
   });
 </script> -->
   <h1 class="list"><strong>Company List</strong></h1>
-  <table border="1">
+  <table border="1" class="padd">
     <thead>
       <tr>
         <th>Company Name</th>
@@ -71,4 +81,13 @@
     </tbody>
     {% endfor %}
   </table>
+  {% if user.is_authenticated %}
+  <br>
+  <div class="pad">
+    <input onclick="location.href='{% url 'room:rooms_delete' %}'" type="button" class="btn btn-danger" value="Delete Rooms">
+    <input onclick="location.href='{% url 'room:export_room' %}'" type="button" class="btn btn-info" value="Export Rooms">
+    <input onclick="location.href='{% url 'room:export_company' %}'" type="button" class="btn btn-info" value="Export Companies">
+    <input onclick="location.href='{% url 'room:export_hostel' %}'" type="button" class="btn btn-info" value="Export Hostels">
+  </div>
+  {% endif %}
 {% endblock %}

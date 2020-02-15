@@ -11,7 +11,6 @@ class RoomForm(forms.ModelForm):
             'room_no': forms.Textarea(attrs={'class': 'form-control editable medium-editor-textarea postcontent'}),
         }
 
-
 class FilebabyForm(forms.ModelForm):
     class Meta:
         model = Company

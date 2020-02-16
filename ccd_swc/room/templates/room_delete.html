@@ -4,11 +4,32 @@
 {% endblock %}
 
 {% block body %}
+  <style>
+    .new {
+      font-size: 20px;
+    }
+    .pass {
+      margin-left: 20px;
+    }
+  </style>
   <br>
   <br>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn btn-primary" value="SAVE">
+    <div class="container jumbotron">
+      <div class="form-group row pass">
+        <label for="staticHostel" class="col-form-label new">Hostel:</label>
+        <input class="form-control" id="staticHostel" type="text" readonly class="form-control-plaintext" value="Barak">
+      </div>
+      <div class="form-group row pass">
+        <label class="new" for="name">Room Number:</label>
+        <input class="form-control" type="text" id="name" name='room_no' placeholder="Remove Room" pattern="[A-Z]-[0-9][0-9][0-9]" required title="Room No should be of format (Char)-(Digit)(Digit)(Digit)" required/>
+      </div>
+      <br>
+      <div class="form-group row pass">
+        <input id="rest" type="submit" class="btn btn-danger" value="Delete">
+      </div>
+    </div>
   </form>
+
 {% endblock %}

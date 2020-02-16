@@ -11,7 +11,13 @@
   <form method="post">
     <br> <br> <br>
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn btn-primary" value="SAVE">
+    <div class="container jumbotron">
+      {{ form.as_p }}
+      {% if not form.instance.pk %}
+        <input type="submit" class="btn btn-success btn-lg" value="Create">
+      {% else %}
+        <input type="submit" class="btn btn-success btn-lg" value="Update">
+      {% endif %}
+    </div>
   </form>
 {% endblock %}

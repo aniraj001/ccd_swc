@@ -35,7 +35,7 @@ class Hostel(models.Model):
 		return self.name
 
 class Room(models.Model):
-	company = models.ForeignKey(Company,related_name="rooms",on_delete=models.SET_NULL,null=True)
+	company = models.ForeignKey(Company,related_name="rooms",on_delete=models.CASCADE)
 	hostel = models.ForeignKey(Hostel,on_delete=models.SET_NULL,null=True)
 	room_no = models.CharField(max_length=100,validators=[
         RegexValidator(

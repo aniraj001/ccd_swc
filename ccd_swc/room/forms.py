@@ -7,19 +7,15 @@ class RoomForm(forms.ModelForm):
         model = Room
         fields = ('room_no',)
 
-    widgets = {
-            'room_no': forms.Textarea(attrs={'class': 'form-control editable medium-editor-textarea postcontent',}),
-        }
-
 class FilebabyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ('name', 'industry', 'poc')
 
     widgets = {
-            'name': forms.TextInput(attrs={'class': 'textinputclass'}),
-            'industry': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
-            'poc': forms.TextInput(attrs={'class': 'textinputclass'}),
+            'name': forms.TextInput(attrs={'class': ''}),
+            'industry': forms.Textarea(attrs={'class': ''}),
+            'poc': forms.TextInput(attrs={'class': ''}),
         }
 
 class UserForm(forms.ModelForm):

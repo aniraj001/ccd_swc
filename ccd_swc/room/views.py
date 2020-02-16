@@ -52,9 +52,9 @@ def room_list(request,pk):
 
 def room_list1(request,pk):
 	company = get_object_or_404(Company,pk=pk)
-	s = Hostel.objects.filter(name="Umium")
+	s = Hostel.objects.filter(name="Umiam")
 	ro = Room.objects.filter(hostel=s[0])
-	return render(request,'company_roomlist.html',{'roomlist':ro,'hostel':"Umium"})
+	return render(request,'company_roomlist.html',{'roomlist':ro,'hostel':"Umiam"})
 
 def search(request):
 	query = request.GET.get('q','')
@@ -98,7 +98,7 @@ def remove_room(request,pk):
 
 def add_room1(request,pk):
 	company = get_object_or_404(Company,pk=pk)
-	s = Hostel.objects.filter(name="Umium")
+	s = Hostel.objects.filter(name="Umiam")
 	ro = Room.objects.filter(hostel=s[0])
 
 	if request.method == "POST":
@@ -116,11 +116,11 @@ def remove_room1(request,pk):
 	if request.method == 'POST':
 		form = RoomForm(request.POST)
 		room = request.POST.get('room_no')
-		k = Hostel.objects.filter(name="Umium")
+		k = Hostel.objects.filter(name="Umiam")
 		dk = Room.objects.filter(company=comp,hostel=k[0],room_no=room)
 		if not dk:
 			return HttpResponse("<h1 style='text-align:center;margin-top:20px;'>Room Number " + room + " is not alloted to "
-			+ comp.name + " in " + "Umium Hostel</h1>")
+			+ comp.name + " in " + "Umiam Hostel</h1>")
 		dk.delete()
 		return redirect('room:detail', pk=comp.pk)
 	else:

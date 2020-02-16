@@ -10,7 +10,7 @@
 <h1 style ="text-align:center;">{{hostel}} Hostel Map</h1>
 <div class="container" id="man">
 <div class="container" id = "manman">
-  <h1 style ="text-align:center;">BLOCK-A</h1>
+  <h1 style ="margin-left:0px;">BLOCK-A</h1>
   <div id="A-049" class = "lol">A-049</div>
   <div id="A-050" class = "lol">A-050</div>
   <div id="A-051" class = "lol">A-051</div>
@@ -49,7 +49,7 @@
   </div>
 </div>
 <div class="container" id = "manman">
-<h1 style ="text-align:center;">BLOCK-A</h1>
+<h1 style ="margin-left:0px;">BLOCK-A</h1>
   <div id="A-019" class = "lol">A-019</div>
   <div id="A-020" class = "lol">A-020</div>
   <div id="A-021" class = "lol">A-021</div>
@@ -88,7 +88,7 @@
   </div>
 </div>
 <div class="container" id = "manman">
-  <h1 style ="text-align:center;">BLOCK-B</h1>
+  <h1 style ="margin-left:0px;">BLOCK-B</h1>
   <div id="B-049" class = "lol">B-049</div>
   <div id="B-050" class = "lol">B-050</div>
   <div id="B-051" class = "lol">B-051</div>
@@ -127,7 +127,7 @@
   </div>
 </div>
 <div class="container" id = "manman">
-<h1 style ="text-align:center;">BLOCK-B</h1>
+<h1 style ="margin-left:0px;">BLOCK-B</h1>
   <div id="B-019" class = "lol">B-019</div>
   <div id="B-020" class = "lol">B-020</div>
   <div id="B-021" class = "lol">B-021</div>
@@ -169,12 +169,6 @@
 <br>
 <br>
 <br>
-<form id="newuserform">
-  {% csrf_token %}
-{% if user.is_authenticated %}
-<input id = "sd" type="submit" class="btn btn-success" value="Submit">
-{% endif %}
-</form>
 
 <style>
 body
@@ -197,8 +191,6 @@ body
   height:80px;
   width: 100px;
   border: 2px solid grey;
-  /* padding: 10px 10px 10px 10px; */
-  /*margin: 10px 10px 10px 10px;*/
   float : left;
   background-color : yellow;
   text-align : center;
@@ -213,8 +205,6 @@ body
     height:80px;
     width: 100px;
     border: 2px solid grey;
-    /* padding: 10px 10px 10px 10px; */
-    /*margin: 10px 10px 10px 10px;*/
     float : left;
     background-color : white;
     text-align : center;
@@ -230,7 +220,6 @@ h1
   width: 100px;
   border: 2px solid green;
   padding: 10px 10px 10px 10px;
-  /*: 10px 10px 10px 10px;*/
   float :left;
   background-color : pink;
   text-align:center;
@@ -254,8 +243,6 @@ h1
   height:80px;
   width: 100px;
   border: 2px solid green;
-  /* padding: 10px 10px 10px 10px; */
-  /*margin: 10px 10px 10px 10px;*/
   float :left;
   background-color : lightblue;
   text-align:center;
@@ -270,9 +257,9 @@ h1
 }
 </style>
 
-  <div id = 'room-numbers'>{% for room in roomlist %}{{room.room_no}},{{room.company.name}},{% endfor %}</div>
+<div id = 'room-numbers'>{% for room in roomlist %}{{room.room_no}},{{room.company.name}},{% endfor %}</div>
 
-  <script type="text/javascript">
+<script type="text/javascript">
     var r = document.getElementById("room-numbers").innerHTML;
     document.getElementById("room-numbers").style.display = "none";
     var lr = r.split(",");
@@ -286,5 +273,5 @@ h1
        q.classList.add("here");
        document.getElementById(p).innerHTML = e + "<br>" + p
     }
-  </script>
+</script>
 {% endblock %}

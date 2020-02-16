@@ -8,10 +8,10 @@
 {% block body %}
 
     <br> <br>
-    <h1 style ="text-align:center;">Umium Hostel Map</h1>
+    <h1 style ="text-align:center;">Umiam Hostel Map</h1>
     <div class="container" id="man">
     <div class="container" id = "manman">
-      <h1 style ="text-align:center;">BLOCK-A</h1>
+      <h1 style ="margin-left:0px;">BLOCK-A</h1>
       <div class = "lol">A-049</div>
       <div class = "lol">A-050</div>
       <div class = "lol">A-051</div>
@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="container" id = "manman">
-<h1 style ="text-align:center;">BLOCK-A</h1>
+<h1 style ="margin-left:0px;">BLOCK-A</h1>
       <div class = "lol">A-019</div>
       <div class = "lol">A-020</div>
       <div class = "lol">A-021</div>
@@ -89,7 +89,7 @@
       </div>
     </div>
     <div class="container" id = "manman">
-      <h1 style ="text-align:center;">BLOCK-B</h1>
+      <h1 style ="margin-left:0px;">BLOCK-B</h1>
       <div class = "lol">B-049</div>
       <div class = "lol">B-050</div>
       <div class = "lol">B-051</div>
@@ -128,7 +128,7 @@
       </div>
     </div>
     <div class="container" id = "manman">
-<h1 style ="text-align:center;">BLOCK-B</h1>
+<h1 style ="margin-left:0px;">BLOCK-B</h1>
       <div class = "lol">B-019</div>
       <div class = "lol">B-020</div>
       <div class = "lol">B-021</div>
@@ -384,7 +384,6 @@ onmouseup = function(e){
     console.log(rooms);
     console.log(sub);
   }
-
   </script>
 
   <div id = 'room-numbers'>{% for room in rooms %}{{room.room_no}} {% endfor %}</div>
@@ -400,7 +399,7 @@ onmouseup = function(e){
                 type:'POST',
                 url:"{% url 'room:roomadd1' pk=primary %}",
                 data:{
-                  hostel:"Umium",
+                  hostel:"Umiam",
                   roo:lop,
                   csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 },

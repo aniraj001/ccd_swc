@@ -46,13 +46,13 @@ def addrooms_delete(request):
 
 def room_list(request,pk):
 	company = get_object_or_404(Company,pk=pk)
-	s = Hostel.objects.filter(name="Brahmaputra")
+	s = Hostel.objects.filter(name="Barak")
 	ro = Room.objects.filter(hostel=s[0])
 	return render(request,'company_roomlist.html',{'roomlist':ro})
 
 def room_list1(request,pk):
 	company = get_object_or_404(Company,pk=pk)
-	s = Hostel.objects.filter(name="Lohit")
+	s = Hostel.objects.filter(name="Umium")
 	ro = Room.objects.filter(hostel=s[0])
 	return render(request,'company_roomlist.html',{'roomlist':ro})
 
@@ -66,7 +66,7 @@ def search(request):
 
 def add_room(request,pk):
 	company = get_object_or_404(Company,pk=pk)
-	s = Hostel.objects.filter(name="Brahmaputra")
+	s = Hostel.objects.filter(name="Barak")
 	ro = Room.objects.filter(hostel=s[0])
 
 	if request.method == "POST":
@@ -86,7 +86,7 @@ def remove_room(request,pk):
 	if request.method == 'POST':
 		form = RoomForm(request.POST)
 		room = request.POST.get('room_no')
-		k = Hostel.objects.filter(name="Brahmaputra")
+		k = Hostel.objects.filter(name="Barak")
 		Room.objects.filter(company=comp,hostel=k[0],room_no=room).delete()
 		data.objects.filter(company=comp.name,hostel=k[0].name,room_no=room).delete()
 		return redirect('room:detail', pk=comp.pk)
@@ -96,7 +96,7 @@ def remove_room(request,pk):
 
 def add_room1(request,pk):
 	company = get_object_or_404(Company,pk=pk)
-	s = Hostel.objects.filter(name="Lohit")
+	s = Hostel.objects.filter(name="Umium")
 	ro = Room.objects.filter(hostel=s[0])
 
 	if request.method == "POST":
@@ -116,7 +116,7 @@ def remove_room1(request,pk):
 	if request.method == 'POST':
 		form = RoomForm(request.POST)
 		room = request.POST.get('room_no')
-		k = Hostel.objects.filter(name="Lohit")
+		k = Hostel.objects.filter(name="Umium")
 		Room.objects.filter(company=comp,hostel=k[0],room_no=room).delete()
 		return redirect('room:detail', pk=comp.pk)
 	else:

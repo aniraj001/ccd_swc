@@ -1,13 +1,54 @@
 {% extends "base.html" %}
-
 {% block body %}
-<h1>Delete All Rooms?</h1>
+<br>
+<br>
+<br>
+<style>
+  a
+  {
+    color:white;
+  }
+  body
+  {
 
+    background-image:url("https://miro.medium.com/max/1080/1*hU0QQDiOnsKpX4qlIyn_4w.jpeg");
+    height:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  h1
+  {
+    color:white;
+    padding-bottom:15px;
+  }
+  .container
+  {
+    margin : 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom:20px;
+    border-radius:30px;
+    text-align:left;
+    border: 2px solid red;
+    width:500px;
+    background-color:rgba(255,255,255,0.2);
+    transition : all ease 0.7s;
+  }
+  .container:hover
+  {
+    background-color:rgba(255,255,255,0.6);
+    transition : all ease 0.7s;
+  }
+
+</style>
+
+<div class = "container">
+<h1>Confirm Delete All Rooms</h1>
 <form method="post">
   {% csrf_token %}
-  <input type="submit" class="btn btn-danger" value="Delete">
-  <a href="{% url 'room:index' %} ">Cancel</a>
-
+  <input type="submit" class="btn btn-danger" value="Confirm">
+  <button class = "btn btn-info"><a href="{% url 'room:index' %} ">Cancel</a></button>
 </form>
-
+</div>
 {% endblock %}

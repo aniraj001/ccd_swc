@@ -404,7 +404,7 @@ body
   {% if user.is_authenticated %}
   <br>
   <div id="pad">
-    <input onclick="location.href='{% url 'room:rooms_delete' %}'" type="button" class="abc" value="Delete Rooms">
+    <input onclick="location.href='{% url 'room:rooms_delete' %}'" type="button" class="abc" value="Delete All Rooms">
     <input onclick="location.href='{% url 'room:export_company' %}'" type="button" class="abc" value="Export Companies">
     <input onclick="location.href='{% url 'room:export_data' %}'" type="button" class="abc" value="Export">
   </div>

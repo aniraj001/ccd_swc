@@ -59,18 +59,10 @@ def room_list1(request,pk):
 def search(request):
 	query = request.GET.get('q','')
 	if query:
-		results = Company.objects.filter(name=query)
+		results = Company.objects.filter(name__istartswith=query)
 	else:
 		results = Company.objects.all()
 	return render(request, 'company_list.html', {'data':results})
-
-def searching(request):
-	if request.method == 'POST':
-		query = request.POST['query']
-		data = Company.objects.filter(name__startswith=query)
-	else:
-		data = Company.objects.all()
-	return render(request, 'company_list.html', {'data':data})
 
 def add_room(request,pk):
 	company = get_object_or_404(Company,pk=pk)
@@ -151,5 +143,3 @@ class CompanyDelete(LoginRequiredMixin,DeleteView):
 
 def about(request):
     return render(request,'about.html',context=None)
-
-

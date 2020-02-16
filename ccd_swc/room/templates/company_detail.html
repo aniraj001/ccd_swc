@@ -1,29 +1,117 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}
+{{% block title %}
   Company Details
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid songs-container">
-		<div class="row">
-			<div class="col-sm-4 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<h2 class="place">Company: {{ company.name }}</h2>
-						<h2>Industry: {{ company.industry }}</h2>
-            <h3><small>POC: {{ company.poc }}</small></h3>
+<style>
+
+  body {
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+    background-position: 100% 50%;
+    }
+    100% {
+    background-position: 0% 50%;
+    }
+
+    }
+    .jumbotron
+    {
+      padding:8px 15px 15px 15px;
+      margin:30px 20px;
+      text-align:center;
+      border-radius:30px;
+      background-color:rgba(255,255,255,0.35);
+      border:2px solid rgba(0,0,0,0.7);
+      transition:  0.7s ease;
+    }
+    .container-fluid
+    {
+      background-color:transparent;
+    }
+    .row1
+    {
+        margin-left: auto;
+    margin-right: auto;
+       width:45%;
+       background-color:transparent;
+    }
+    .panel-body
+    {
+      margin:0;
+      padding:20px;
+      border-radius:30px;
+      border :5px solid black;
+      text-align:center;
+      font-family: Tahoma, Verdana, Segoe, sans-serif;
+      background-color:rgba(255,255,255,0.40);
+      transition:  0.7s ease;
+    }
+    .panel-body:hover
+    {
+      background-color:rgba(255,255,255,0.80);
+      transition-timing-function: linear;
+      transition:  0.7s ease;
+
+    }
+    .jumbotron:hover
+    {
+      background-color:rgba(255,255,255,0.90);
+      transition-timing-function: linear;
+      transition:  0.7s ease;
+    }
+    .place
+    {
+      font-size:45px;
+      font-weight:bold;
+    }
+    .pla
+    {
+      font-size:35px;
+      font-weight:bold;
+    }
+    h3
+    {
+      font-size:25px;
+    }
+    input
+    {
+      width:250px;
+      margin:5px;
+    }
+</style>
+
+<br>
+<br>
+<br>
+<div class="container-fluid">
+<div class="row1">
+<div class="">
+
+<div class="panel-body">
+<h2 class="place">Company: {{ company.name }}</h2>
+<h2 class="pla">Industry: {{ company.industry }}</h2>
+            <h3>POC: {{ company.poc }}</h3>
             {% if user.is_authenticated %}
             <input onclick = "location.href='{% url 'room:company-update' pk=company.pk %}'" type="button" class="btn btn-warning" value="Update">
             {% endif %}
-					</div>
-				</div>
-			</div>
+</div>
+
+</div>
     </div>
   </div>
-
-  <div class="jumbotron">
-    <h2>Brahmaputra</h2>
+<br>
+  <div class="jumbotron .col-sm-3">
+    <h2 class = "pla">Brahmaputra</h2>
     <input onclick="location.href='{% url 'room:roomlist' pk=company.pk %}'" type="button" class="btn btn-success" value="Company Room List">
     {% if user.is_authenticated %}
     <input onclick="location.href='{% url 'room:roomadd' pk=company.pk %}'" type="button" class="btn btn-primary" value="Add Room">
@@ -31,8 +119,8 @@
     {% endif %}
   </div>
 
-  <div class="jumbotron">
-    <h2>Lohit</h2>
+  <div class="jumbotron .col-sm-3">
+    <h2 class = "pla">Lohit</h2>
     <input onclick="location.href='{% url 'room:roomlist1' pk=company.pk %}'" type="button" class="btn btn-success" value="Company Room List">
     {% if user.is_authenticated %}
     <input onclick="location.href='{% url 'room:roomadd1' pk=company.pk %}'" type="button" class="btn btn-primary" value="Add Room">
@@ -40,5 +128,4 @@
     {% endif %}
 
   </div>
-
-{% endblock %}
+  {% endblock %}

@@ -3,10 +3,6 @@
 {% block title %} CCD Room Allotment {% endblock %}
 
 {% block navigation %}
-
-
-
-
 {% endblock %}
 
 {% block body %}
@@ -32,7 +28,7 @@ body
     margin: 0;
 }
 body {
-  background: linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)),url("https://upload.wikimedia.org/wikipedia/commons/2/27/IIT_Guwahati.jpg") no-repeat center center fixed;
+  background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),url("https://upload.wikimedia.org/wikipedia/commons/2/27/IIT_Guwahati.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -68,9 +64,9 @@ input, button
     left: 0;
     right: 0;
     top:0;
-    width: 40%;
+    width: 52%;
     padding: 0px;
-    margin-top: 410px;
+    margin-top: 415px;
     margin-left: 42%;
     background-color: black;
     border-radius: 15px;
@@ -80,14 +76,14 @@ input, button
 
 form
 {
-    height: 120px;
+    height: 110px;
 }
 
 input[type="text"]
 {
    padding-left:15px;
     width: 100%;
-    height: 95px;
+    height: 92px;
     font-size: 85px;
     line-height: 1.5;
 }
@@ -95,6 +91,8 @@ input[type="text"]
 input[type="text"]::placeholder
 {
     color: grey;
+    font-size: 65px;
+    padding-left:20px;
 }
 
 #s-cover
@@ -181,7 +179,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   line-height: 1.42em;
-  color:#A7A1AE;
+  color:#a7a1ae;
   background-color:#1F2739;
 }
 
@@ -231,12 +229,12 @@ h2 a {
 }
 
 .container {
- text-align: left;
+ text-align: center;
  overflow: hidden;
- width: 50%;
+ width: 70%;
  margin: 0 auto;
   display: table;
-  padding: 0 0 8em 0;
+  padding: 0 0 0 0;
 }
 
 .container td, .container th {
@@ -258,7 +256,7 @@ h2 a {
 .container td:first-child { color: #FB667A; }
 
 .container tr:hover {
-   background-color: #464A52;
+    background-color: rgba(0,0,0,0.45);
 -webkit-box-shadow: 0 2px 2px -2px #0E1119;
   -moz-box-shadow: 0 2px 2px -2px #0E1119;
        box-shadow: 0 2px 2px -2px #0E1119;
@@ -269,11 +267,11 @@ h2 a {
   color: black;
 
 
-  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px;
+  box-shadow: red -1px 1px, red -2px 2px;
   transform: translate3d(2px, -2px, 0);
 
   transition-delay: 0s;
-transition-duration: 0.2s;
+transition-duration: 0.25s;
 transition-property: all;
   transition-timing-function: line;
 }
@@ -316,8 +314,7 @@ body
 }
 #cont
 {
-  margin :0 auto;
-  width:50%;
+  /*margin :0 auto;*/
 
   text-align :center;
 
@@ -325,46 +322,52 @@ body
 }
 .pad
 {
-  margin : 0px auto ;
+  margin : 0px ;
 }
+
+#haha
+{
+  text-align:center;
+}
+.abc
+{
+  border:1.5px solid white;
+  border-radius:5px;
+  padding : 10px;
+  margin : 5px;
+}
+#pad
+{
+  text-align:center;
+  margin:0 auto;
+  padding:10px;
+}
+#pad input:hover
+{
+  background-color:rgba(0,0,0,0.5);
+  transition: background-color 0.3s ease;
+}
+#cunn:hover
+{
+  background-color:rgba(255,0,0,0.75);
+}
+
 </style>
-<div id="cover">
-  <form method="GET" action="." role = "search">
-    <div class="tb">
-      <div class="td"><input type="text" name="q" placeholder="Search" required></div>
-      <div class="td" id="s-cover">
-        <button type="submit" value = "{{query|escape}}">
-          <div id="s-circle"></div>
-          <span></span>
-        </button>
+
+  <div id="cover">
+    <form method="GET" action="." role = "search">
+      <div class="tb">
+        <div class="td"><input id = "pop" type="text" name="q" placeholder="Search Company Name" required></div>
+        <div class="td" id="s-cover">
+          <button type="submit" id = "popp" value = "{{query|escape}}">
+            <div id="s-circle"></div>
+            <span></span>
+          </button>
+        </div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
 
-  <script>
-    $(document).ready(function(){
-      $('#country').keyup(function(){
-        var query = $(this).val();
-        if(query!=''){
-          $.ajax({
-            type:'POST',
-            url:"{% url 'room:index' %}",
-            data:{
-              query:query
-            },
-            success:function(data){
-                 $('#country-list').fadeIn();
-                 $('#country-list').html(data);
-            }
-          })
-        }
-      });
-    });
-
-    var searchRequest = null;
-
-  </script>
   <br>
   <div class = container>
   <h1 class="list"><strong>Company List</strong></h1>
@@ -376,16 +379,16 @@ body
         <tr>
         <th>Company Name</th>
         {% if user.is_authenticated %}
-        <th style="text-align: center;">Delete</th>
+        <th id = "haha"><div>Delete</div></th>
         {% endif %}
         </tr>
     </thead>
     <tbody>
     {% for company in data %}
       <tr>
-        <td><div id = "cont"><a href="{% url 'room:detail' company.id %}">{{ company.name }}</a></div></td>
+        <td id = "cun"><div id = "cont"><a href="{% url 'room:detail' company.id %}">{{ company.name }}</a></div></td>
         {% if user.is_authenticated %}
-        <td>
+        <td id = "cunn">
           <form action="{% url 'room:company-delete' company.id %}" method="post" style="display: inline;">
             {% csrf_token %}
             <input type="submit" value="Delete">
@@ -396,13 +399,14 @@ body
     </tbody>
     {% endfor %}
   </table>
+  </div>
 
   {% if user.is_authenticated %}
   <br>
-  <div class="pad container-fluid">
-    <input style="margin-left:10%;" onclick="location.href='{% url 'room:rooms_delete' %}'" type="button" class="btn btn-danger" value="Delete Rooms">
-    <input onclick="location.href='{% url 'room:export_company' %}'" type="button" class="btn btn-info" value="Export Companies">
-    <input onclick="location.href='{% url 'room:export_data' %}'" type="button" class="btn btn-info" value="Export">
+  <div id="pad">
+    <input onclick="location.href='{% url 'room:rooms_delete' %}'" type="button" class="abc" value="Delete Rooms">
+    <input onclick="location.href='{% url 'room:export_company' %}'" type="button" class="abc" value="Export Companies">
+    <input onclick="location.href='{% url 'room:export_data' %}'" type="button" class="abc" value="Export">
   </div>
   {% endif %}
 {% endblock %}

@@ -10,8 +10,6 @@ urlpatterns = [
 
     path('', views.search, name='index'),
 
-    path('', views.searching, name='index1'),
-
 	path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 
     path('<int:pk>/roomlist',views.room_list,name='roomlist'),

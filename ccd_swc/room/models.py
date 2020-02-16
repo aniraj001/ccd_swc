@@ -8,6 +8,9 @@ class Company(models.Model):
 	industry = models.CharField(max_length=250)
 	poc = models.CharField(max_length=250)
 
+	class Meta:
+		verbose_name = "Companie"
+
 	def get_absolute_url(self):
 		return reverse('room:detail', kwargs={'pk': self.pk})
 
@@ -25,6 +28,9 @@ class Company(models.Model):
 class Hostel(models.Model):
 	name = models.CharField(max_length=100)
 
+	class Meta:
+		verbose_name = "Hostel"
+
 	def __str__(self):
 		return self.name
 
@@ -39,7 +45,9 @@ class Room(models.Model):
     ])
 
 	class Meta:
+		verbose_name = "Room"
 		unique_together = ['room_no','hostel']
+
 	def company_fill(self,Company):
 		self.company = Company.pk
 	def save(self,*args, **kw):
@@ -54,5 +62,9 @@ class data(models.Model):
             message='room number must be of form: A-9'
         ),
     ])
+
+	class Meta:
+		verbose_name = "Data Set"
+
 	hostel  = models.CharField(max_length=100)
 	company = models.CharField(max_length=250)

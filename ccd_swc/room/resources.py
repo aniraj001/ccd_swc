@@ -1,14 +1,10 @@
 from import_export import resources
-from .models import Room,Company,Hostel
-
-class RoomResource(resources.ModelResource):
-    class Meta:
-        model = Room
+from .models import Company,data
 
 class CompanyResource(resources.ModelResource):
     class Meta:
         model = Company
 
-class HostelResource(resources.ModelResource):
-    class Meta:
-        model = Hostel
+class dataResource(resources.ModelResource):
+	class Meta:
+		model = data

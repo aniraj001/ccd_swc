@@ -401,9 +401,8 @@ body
   <br>
   <div class="pad container-fluid">
     <input style="margin-left:10%;" onclick="location.href='{% url 'room:rooms_delete' %}'" type="button" class="btn btn-danger" value="Delete Rooms">
-    <input onclick="location.href='{% url 'room:export_room' %}'" type="button" class="btn btn-info" value="Export Rooms">
     <input onclick="location.href='{% url 'room:export_company' %}'" type="button" class="btn btn-info" value="Export Companies">
-    <input onclick="location.href='{% url 'room:export_hostel' %}'" type="button" class="btn btn-info" value="Export Hostels">
+    <input onclick="location.href='{% url 'room:export_data' %}'" type="button" class="btn btn-info" value="Export">
   </div>
   {% endif %}
 {% endblock %}

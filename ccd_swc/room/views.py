@@ -6,20 +6,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.views import generic
 from django.views.generic import View
-from .models import Company, Hostel, Room
+from .models import Company, Hostel, Room, data
 from .forms import RoomForm, FilebabyForm
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
-from .resources import RoomResource, CompanyResource, HostelResource
+from .resources import CompanyResource, dataResource
+import sqlite3
 
-def export_room(request):
-	room_resource = RoomResource()
-	dataset = room_resource.export()
-	response = HttpResponse(dataset.csv, content_type='text/csv')
-	response['Content-Disposition'] = 'attachment; filename="rooms.csv"'
-	return response
 
 def export_company(request):
 	company_resource = CompanyResource()
@@ -28,12 +23,14 @@ def export_company(request):
 	response['Content-Disposition'] = 'attachment; filename="companies.csv"'
 	return response
 
-def export_hostel(request):
-	hostel_resource = HostelResource()
-	dataset = hostel_resource.export()
+
+def export(request):
+	data_resource = dataResource()
+	dataset = data_resource.export()
 	response = HttpResponse(dataset.csv, content_type='text/csv')
-	response['Content-Disposition'] = 'attachment; filename="hostels.csv"'
+	response['Content-Disposition'] = 'attachment; filename="all_data.csv"'
 	return response
+
 
 class DetailView(generic.DetailView):
 	template_name = 'company_detail.html'
@@ -85,6 +82,7 @@ def add_room(request,pk):
 		l = rooms.split()
 		for room in l:
 			Room.objects.create(company=company,hostel=s[0],room_no=room)
+			data.objects.create(company=company.name,hostel=s[0].name,room_no=room)
 		return redirect('room:detail', pk=company.pk)
 	else:
 		form = RoomForm()
@@ -98,6 +96,7 @@ def remove_room(request,pk):
 		room = request.POST.get('room_no')
 		k = Hostel.objects.filter(name="Brahmaputra")
 		Room.objects.filter(company=comp,hostel=k[0],room_no=room).delete()
+		data.objects.filter(company=comp.name,hostel=k[0].name,room_no=room).delete()
 		return redirect('room:detail', pk=comp.pk)
 	else:
 		form = RoomForm()
@@ -113,6 +112,7 @@ def add_room1(request,pk):
 		l = rooms.split()
 		for room in l:
 			Room.objects.create(company=company,hostel=s[0],room_no=room)
+			data.objects.create(company=company.name,hostel=s[0].name,room_no=room)
 		return redirect('room:detail', pk=company.pk)
 	else:
 		form = RoomForm()
@@ -151,3 +151,5 @@ class CompanyDelete(LoginRequiredMixin,DeleteView):
 
 def about(request):
     return render(request,'about.html',context=None)
+
+

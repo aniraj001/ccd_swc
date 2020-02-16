@@ -46,3 +46,13 @@ class Room(models.Model):
 		super(Room,self).save(*args, **kw)
 	def __str__(self):
 		return self.room_no
+
+class data(models.Model):
+	room_no = models.CharField(max_length=100,validators=[
+        RegexValidator(
+			regex='^([A-Z])-([0-9])+$',
+            message='room number must be of form: A-9'
+        ),
+    ])
+	hostel  = models.CharField(max_length=100)
+	company = models.CharField(max_length=250)

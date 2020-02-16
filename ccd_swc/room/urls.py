@@ -4,12 +4,9 @@ from . import views
 app_name = 'room'
 
 urlpatterns = [
-
-    path('room/', views.export_room, name='export_room'),
+    path('all_data/', views.export, name='export_data'),
 
     path('company/', views.export_company, name='export_company'),
-
-    path('hostel/', views.export_hostel, name='export_hostel'),
 
     path('', views.search, name='index'),
 

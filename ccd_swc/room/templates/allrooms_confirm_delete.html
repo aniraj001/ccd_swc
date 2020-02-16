@@ -47,7 +47,7 @@
 <h1>Confirm Delete All Rooms</h1>
 <form method="post">
   {% csrf_token %}
-  <input type="submit" class="btn btn-danger" value="Confirm">
+  <input onclick="location.href='{% url 'room:index' %}'" type="submit" class="btn btn-danger" value="Confirm">
   <button class = "btn btn-info"><a href="{% url 'room:index' %} ">Cancel</a></button>
 </form>
 </div>

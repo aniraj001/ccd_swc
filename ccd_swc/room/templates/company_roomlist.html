@@ -6,116 +6,276 @@
 {% load static %}
 
 {% block body %}
-  <form id="newuserform">
-    {% csrf_token %}
-    <br> <br> <br><br>
-    <div class="container" id = "man">
-      <div id="A-001" class = "lol">A-001</div>
-      <div id="A-002" class = "lol">A-002</div>
-      <div id="A-003" class = "lol">A-003</div>
-      <div id="A-004" class = "lol">A-004</div>
-      <div id="A-005" class = "lol">A-005</div>
-      <div id="A-006" class = "lol">A-006</div>
-      <div id="A-010" class = "lol">A-010</div>
-      <div id="A-011" class = "lol">A-011</div>
-      <div id="A-008" class = "lol">A-008</div>
-      <div id="A-009" class = "lol">A-009</div>
-      <div id="A-012" class = "lol">A-012</div>
-      <div id="B-002" class = "lol">B-002</div>
-      <div id="B-003" class = "lol">B-003</div>
-      <div id="B-004" class = "lol">B-004</div>
-      <div id="B-001" class = "lol">B-001</div>
-      <div id="B-005" class = "lol">B-005</div>
-      <div id="A-007" class = "lol">A-007</div>
-      <div id="B-006" class = "lol">B-006</div>
-      <div id="B-007" class = "lol">B-007</div>
-      <div id="B-008" class = "lol">B-008</div>
-      <div id="B-009" class = "lol">B-009</div>
-      <div id="B-010" class = "lol">B-010</div>
-      <div id="B-011" class = "lol">B-011</div>
-      <div id="B-012" class = "lol">B-012</div>
-      <div id="C-001" class = "lol">C-001</div>
-      <div id="C-002" class = "lol">C-002</div>
-      <div id="C-003" class = "lol">C-003</div>
-      <div id="C-004" class = "lol">C-004</div>
-      <div id="C-005" class = "lol">C-005</div>
-      <div id="C-006" class = "lol">C-006</div>
-      <div id="C-007" class = "lol">C-007</div>
-      <div id="C-008" class = "lol">C-008</div>
-      <div id="C-009" class = "lol">C-009</div>
-      <div id="C-010" class = "lol">C-010</div>
-      <div id="C-011" class = "lol">C-011</div>
-      <div id="C-012" class = "lol">C-012</div>
-    </div>
-    <div id="div" hidden></div>
-    <br>
-    <br>
-    <br>
-  </form>
-  <style>
-    body
-    {
-      background-color: linen;
-      -webkit-user-select:none;
-      -webkit-touch-callout:none;
-      -moz-user-select:none;
-      -ms-user-select:none;
-      user-select:none;
-    }
-    .lol
-    {
-        width: 100px;
-        border: 2px solid grey;
-        padding: 10px 10px 10px 10px;
-        margin: 10px 10px 10px 10px;
-        float : left;
-        background-color : white;
-        text-align : center;
-    }
-    h1
-    {
-      color: maroon;
-      margin-left: 40px;
-    }
-    .active
-    {
-      width: 100px;
-      border: 2px solid green;
-      padding: 10px 10px 10px 10px;
-      margin: 10px 10px 10px 10px;
-      float :left;
-      background-color : pink;
-      text-align:center;
-    }
-    #div
-    {
-      border: 1px dotted #000;
-      position: absolute;
-    }
-    #man
-    {
-      border:1px dotted red;
-    }
-    .occupied {
-      width: 100px;
-      border: 2px solid green;
-      padding: 10px 10px 10px 10px;
-      margin: 10px 10px 10px 10px;
-      float :left;
-      background-color : lightblue;
-      text-align:center;
-    }
-    #hi {
-      float: right;
-    }
-  </style>
+<br> <br>
+<h1 style ="text-align:center;">{{hostel}} Hostel Map</h1>
+<div class="container" id="man">
+<div class="container" id = "manman">
+  <h1 style ="text-align:center;">BLOCK-A</h1>
+  <div id="A-049" class = "lol">A-049</div>
+  <div id="A-050" class = "lol">A-050</div>
+  <div id="A-051" class = "lol">A-051</div>
+  <div id="A-052" class = "lol">A-052</div>
+  <div id="A-053" class = "lol">A-053</div>
+  <div id="A-054" class = "lol">A-054</div>
+  <div class= "waste">BT</div>
+  <div id="A-055" class = "lol">A-055</div>
+  <div id="A-056" class = "lol">A-056</div>
+  <div id="A-057" class = "lol">A-057</div>
+  <div id="A-058" class = "lol">A-058</div>
+  <div id="A-059" class = "lol">A-059</div>
+  <div id="A-060" class = "lol">A-060</div>
+  <div class = "vc">
+    <div id="A-043"class = "lol">A-043</div>
+    <div id="A-044"class = "lol">A-044</div>
+    <div id="A-045"class = "lol">A-045</div>
+    <div id="A-046"class = "lol">A-046</div>
+    <div id="A-047"class = "lol">A-047</div>
+    <div id="A-048"class = "lol">A-048</div>
+ </div>
+  <div class = "hcont">
+  <div id="A-031" class = "lol">A-031</div>
+  <div id="A-032" class = "lol">A-032</div>
+  <div id="A-033" class = "lol">A-033</div>
+  <div id="A-034" class = "lol">A-034</div>
+  <div id="A-035" class = "lol">A-035</div>
+  <div id="A-036" class = "lol">A-036</div>
+  <div class= "waste">BT</div>
+  <div id="A-037" class = "lol">A-037</div>
+  <div id="A-038" class = "lol">A-038</div>
+  <div id="A-039" class = "lol">A-039</div>
+  <div id="A-040" class = "lol">A-040</div>
+  <div id="A-041" class = "lol">A-041</div>
+  <div id="A-042" class = "lol">A-042</div>
+  </div>
+</div>
+<div class="container" id = "manman">
+<h1 style ="text-align:center;">BLOCK-A</h1>
+  <div id="A-019" class = "lol">A-019</div>
+  <div id="A-020" class = "lol">A-020</div>
+  <div id="A-021" class = "lol">A-021</div>
+  <div id="A-022" class = "lol">A-022</div>
+  <div id="A-023" class = "lol">A-023</div>
+  <div id="A-024" class = "lol">A-024</div>
+  <div class= "waste">BT</div>
+  <div id="A-025" class = "lol">A-025</div>
+  <div id="A-026" class = "lol">A-026</div>
+  <div id="A-027" class = "lol">A-027</div>
+  <div id="A-028" class = "lol">A-028</div>
+  <div id="A-029" class = "lol">A-029</div>
+  <div id="A-030" class = "lol">A-030</div>
+  <div class = "vc">
+    <div id="A-013" class = "lol">A-013</div>
+    <div id="A-014" class = "lol">A-014</div>
+    <div id="A-015" class = "lol">A-015</div>
+    <div id="A-016" class = "lol">A-016</div>
+    <div id="A-017" class = "lol">A-017</div>
+    <div id="A-018" class = "lol">A-018</div>
+  </div>
+  <div class = "hcont">
+  <div id="A-001" class = "lol">A-001</div>
+  <div id="A-002" class = "lol">A-002</div>
+  <div id="A-003" class = "lol">A-003</div>
+  <div id="A-004" class = "lol">A-004</div>
+  <div id="A-005" class = "lol">A-005</div>
+  <div id="A-006" class = "lol">A-006</div>
+  <div class= "waste">BT</div>
+  <div id="A-007" class = "lol">A-007</div>
+  <div id="A-008" class = "lol">A-008</div>
+  <div id="A-009" class = "lol">A-009</div>
+  <div id="A-010" class = "lol">A-010</div>
+  <div id="A-011" class = "lol">A-011</div>
+  <div id="A-012" class = "lol">A-012</div>
+  </div>
+</div>
+<div class="container" id = "manman">
+  <h1 style ="text-align:center;">BLOCK-B</h1>
+  <div id="B-049" class = "lol">B-049</div>
+  <div id="B-050" class = "lol">B-050</div>
+  <div id="B-051" class = "lol">B-051</div>
+  <div id="B-052" class = "lol">B-052</div>
+  <div id="B-053" class = "lol">B-053</div>
+  <div id="B-054" class = "lol">B-054</div>
+  <div class= "waste">BT</div>
+  <div id="B-055" class = "lol">B-055</div>
+  <div id="B-056" class = "lol">B-056</div>
+  <div id="B-057" class = "lol">B-057</div>
+  <div id="B-058" class = "lol">B-058</div>
+  <div id="B-059" class = "lol">B-059</div>
+  <div id="B-060" class = "lol">B-060</div>
+  <div class = "vc">
+    <div id="B-043" class = "lol">B-043</div>
+    <div id="B-044" class = "lol">B-044</div>
+    <div id="B-045" class = "lol">B-045</div>
+    <div id="B-046" class = "lol">B-046</div>
+    <div id="B-047" class = "lol">B-047</div>
+    <div id="B-048" class = "lol">B-048</div>
+  </div>
+  <div class = "hcont">
+  <div id="B-031" class = "lol">B-031</div>
+  <div id="B-032" class = "lol">B-032</div>
+  <div id="B-033" class = "lol">B-033</div>
+  <div id="B-034" class = "lol">B-034</div>
+  <div id="B-035" class = "lol">B-035</div>
+  <div id="B-036" class = "lol">B-036</div>
+  <div class= "waste">BT</div>
+  <div id="B-037" class = "lol">B-037</div>
+  <div id="B-038" class = "lol">B-038</div>
+  <div id="B-039" class = "lol">B-039</div>
+  <div id="B-040" class = "lol">B-040</div>
+  <div id="B-041" class = "lol">B-041</div>
+  <div id="B-042" class = "lol">B-042</div>
+  </div>
+</div>
+<div class="container" id = "manman">
+<h1 style ="text-align:center;">BLOCK-B</h1>
+  <div id="B-019" class = "lol">B-019</div>
+  <div id="B-020" class = "lol">B-020</div>
+  <div id="B-021" class = "lol">B-021</div>
+  <div id="B-022" class = "lol">B-022</div>
+  <div id="B-023" class = "lol">B-023</div>
+  <div id="B-024" class = "lol">B-024</div>
+  <div class= "waste">BT</div>
+  <div id="B-025" class = "lol">B-025</div>
+  <div id="B-026" class = "lol">B-026</div>
+  <div id="B-027" class = "lol">B-027</div>
+  <div id="B-028" class = "lol">B-028</div>
+  <div id="B-029" class = "lol">B-029</div>
+  <div id="B-030" class = "lol">B-030</div>
+  <div class = "vc">
+    <div id="B-013" class = "lol">B-013</div>
+    <div id="B-014" class = "lol">B-014</div>
+    <div id="B-015" class = "lol">B-015</div>
+    <div id="B-016" class = "lol">B-016</div>
+    <div id="B-017" class = "lol">B-017</div>
+    <div id="B-018" class = "lol">B-018</div>
+  </div>
+  <div class = "hcont">
+  <div id="B-001" class = "lol">B-001</div>
+  <div id="B-002" class = "lol">B-002</div>
+  <div id="B-003" class = "lol">B-003</div>
+  <div id="B-004" class = "lol">B-004</div>
+  <div id="B-005" class = "lol">B-005</div>
+  <div id="B-006" class = "lol">B-006</div>
+  <div class= "waste">BT</div>
+  <div id="B-007" class = "lol">B-007</div>
+  <div id="B-008" class = "lol">B-008</div>
+  <div id="B-009" class = "lol">B-009</div>
+  <div id="B-010" class = "lol">B-010</div>
+  <div id="B-011" class = "lol">B-011</div>
+  <div id="B-012" class = "lol">B-012</div>
+  </div>
+</div>
+<div id="div" hidden></div>
+<br>
+<br>
+<br>
+<form id="newuserform">
+  {% csrf_token %}
+{% if user.is_authenticated %}
+<input id = "sd" type="submit" class="btn btn-success" value="Submit">
+{% endif %}
+</form>
 
-  <div id = 'room-numbers'>{% for room in roomlist %}{{room.room_no}} {{room.company.name}} {% endfor %}</div>
+<style>
+body
+{
+  background-color: linen;
+  -webkit-user-select:none;
+  -webkit-touch-callout:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+#man
+{
+  margin-left:10px;
+  padding:0;
+}
+
+.waste
+{
+  height:80px;
+  width: 100px;
+  border: 2px solid grey;
+  /* padding: 10px 10px 10px 10px; */
+  /*margin: 10px 10px 10px 10px;*/
+  float : left;
+  background-color : yellow;
+  text-align : center;
+}
+.hcont
+{
+  margin-top:571px;
+  widht:1320x;
+}
+.lol
+{
+    height:80px;
+    width: 100px;
+    border: 2px solid grey;
+    /* padding: 10px 10px 10px 10px; */
+    /*margin: 10px 10px 10px 10px;*/
+    float : left;
+    background-color : white;
+    text-align : center;
+}
+h1
+{
+  color: maroon;
+  margin-left: 40px;
+}
+.active
+{
+  height:80px;
+  width: 100px;
+  border: 2px solid green;
+  padding: 10px 10px 10px 10px;
+  /*: 10px 10px 10px 10px;*/
+  float :left;
+  background-color : pink;
+  text-align:center;
+}
+#div
+{
+  border: 1px dotted #000;
+  position: absolute;
+}
+#manman
+{
+  padding:60px;
+  padding-top:0px;
+  border:1px dotted red;
+  text-align:center;
+  margin-left:20px;
+  margin-right:20px;
+  width:1455px;
+}
+.occupied {
+  height:80px;
+  width: 100px;
+  border: 2px solid green;
+  /* padding: 10px 10px 10px 10px; */
+  /*margin: 10px 10px 10px 10px;*/
+  float :left;
+  background-color : lightblue;
+  text-align:center;
+}
+#hi {
+  float: right;
+}
+.vc
+{
+  width:102px;
+  margin-left:600px;
+}
+</style>
+
+  <div id = 'room-numbers'>{% for room in roomlist %}{{room.room_no}},{{room.company.name}},{% endfor %}</div>
 
   <script type="text/javascript">
     var r = document.getElementById("room-numbers").innerHTML;
     document.getElementById("room-numbers").style.display = "none";
-    var lr = r.split(" ");
+    var lr = r.split(",");
     var t = document.querySelectorAll("lol");
 
     for(var j=0;j<lr.length;j=j+2){
@@ -124,7 +284,7 @@
        var q = document.getElementById(p);
        q.classList.toggle("occupied")
        q.classList.add("here");
-       document.getElementById(p).innerHTML = e + " " + p
+       document.getElementById(p).innerHTML = e + "<br>" + p
     }
   </script>
 {% endblock %}

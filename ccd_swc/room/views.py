@@ -15,14 +15,12 @@ from django.http import HttpResponse
 from .resources import CompanyResource, dataResource
 import sqlite3
 
-
 def export_company(request):
 	company_resource = CompanyResource()
 	dataset = company_resource.export()
 	response = HttpResponse(dataset.csv, content_type='text/csv')
 	response['Content-Disposition'] = 'attachment; filename="companies.csv"'
 	return response
-
 
 def export(request):
 	for room in Room.objects.all():
@@ -50,13 +48,13 @@ def room_list(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Barak")
 	ro = Room.objects.filter(hostel=s[0])
-	return render(request,'company_roomlist.html',{'roomlist':ro})
+	return render(request,'company_roomlist.html',{'roomlist':ro,'hostel':"Barak"})
 
 def room_list1(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Umium")
 	ro = Room.objects.filter(hostel=s[0])
-	return render(request,'company_roomlist.html',{'roomlist':ro})
+	return render(request,'company_roomlist.html',{'roomlist':ro,'hostel':"Umium"})
 
 def search(request):
 	query = request.GET.get('q','')

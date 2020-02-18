@@ -12,6 +12,10 @@ urlpatterns = [
 
 	path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 
+    path('barak_room_list/',views.barak_room_list.as_view(),name='barak_room_list'),
+
+    path('umiam_room_list/',views.umiam_room_list.as_view(),name='umiam_room_list'),
+
     path('<int:pk>/barak',views.room_list,name='roomlist'),
 
     path('<int:pk>/umiam',views.room_list1,name='roomlist1'),

@@ -15,6 +15,20 @@ from django.http import HttpResponse
 from .resources import CompanyResource, dataResource
 import sqlite3
 
+class barak_room_list(TemplateView):
+	template_name = 'room_list.html'
+	def get(self,request):
+		s = Hostel.objects.filter(name="Barak")
+		ro = Room.objects.filter(hostel=s[0])
+		return render(request,self.template_name,{'roomlist':ro,'hostel':'Barak'})
+
+class umiam_room_list(TemplateView):
+	template_name = 'room_list.html'
+	def get(self,request):
+		s = Hostel.objects.filter(name="Umiam")
+		ro = Room.objects.filter(hostel=s[0])
+		return render(request,self.template_name,{'roomlist':ro,'hostel':'Umiam'})
+
 def export_company(request):
 	company_resource = CompanyResource()
 	dataset = company_resource.export()
@@ -48,13 +62,13 @@ def room_list(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Barak")
 	ro = Room.objects.filter(hostel=s[0])
-	return render(request,'company_roomlist.html',{'roomlist':ro,'hostel':"Barak"})
+	return render(request,'company_roomlist.html',{'roomlist':ro,'hostel':"Barak",'company':company.name})
 
 def room_list1(request,pk):
 	company = get_object_or_404(Company,pk=pk)
 	s = Hostel.objects.filter(name="Umiam")
 	ro = Room.objects.filter(hostel=s[0])
-	return render(request,'company_roomlist.html',{'roomlist':ro,'hostel':"Umiam"})
+	return render(request,'company_roomlist.html',{'roomlist':ro,'hostel':"Umiam",'company':company.name})
 
 def search(request):
 	query = request.GET.get('q','')

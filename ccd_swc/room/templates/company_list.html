@@ -354,8 +354,91 @@ body
 {
   background-color:rgba(255,0,0,0.75);
 }
+  #load
+  {
+    opacity:1;
+  background-color:blue;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index:1000;
+  visibility:hidden;
+  }
+  body, html {
+  height: 100%;
+  text-align: center;
+}
 
+body {
+background-color: #242F3F;
+}
+
+.loader {
+display: inline-block;
+width: 30px;
+height: 30px;
+position: relative;
+border: 4px solid #Fff;
+top: 50%;
+animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+vertical-align: top;
+display: inline-block;
+width: 100%;
+background-color: #fff;
+animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+0% {
+  transform: rotate(0deg);
+}
+
+25% {
+  transform: rotate(180deg);
+}
+
+50% {
+  transform: rotate(180deg);
+}
+
+75% {
+  transform: rotate(360deg);
+}
+
+100% {
+  transform: rotate(360deg);
+}
+}
+
+@keyframes loader-inner {
+0% {
+  height: 0%;
+}
+
+25% {
+  height: 0%;
+}
+
+50% {
+  height: 100%;
+}
+
+75% {
+  height: 100%;
+}
+
+100% {
+  height: 0%;
+}
+}
 </style>
+
+<div id = "load"><span class="loader"><span class="loader-inner"></span></span></div>
 
   <div id="cover">
     <form method="GET" action="." role = "search">
@@ -406,13 +489,29 @@ body
 
   <br>
   <div id="pad">
-    <input onclick="location.href='{% url 'room:barak_room_list' %}'" type="button" class="abc" value="Barak Room List">
-    <input onclick="location.href='{% url 'room:umiam_room_list' %}'" type="button" class="abc" value="Umiam Room List">
+    <
+    <!-- <input id = 'f1' onclick="location.href='{% url 'room:barak_room_list' %}'" type="button" class="abc" value="Barak Room List"> -->
+    <input id = 'f1' type="button" class="abc" value="Barak Room List">
+    <input id = 'f2' type="button" class="abc" value="Umiam Room List">
     {% if user.is_authenticated %}
     <input onclick="location.href='{% url 'room:rooms_delete' %}'" type="button" class="abc" value="Delete All Rooms">
     <input onclick="location.href='{% url 'room:export_company' %}'" type="button" class="abc" value="Export Companies">
     <input onclick="location.href='{% url 'room:export_data' %}'" type="button" class="abc" value="Export">
+
     {% endif %}
   </div>
 
+
+
+
+  <script type="text/javascript">
+      $('#f1').click(function(){
+        $('#load').css("visibility","visible");
+        window.location.href = "{% url 'room:barak_room_list' %}";
+      })
+      $('#f2').click(function(){
+        $('#load').css("visibility","visible");
+        window.location.href = "{% url 'room:umiam_room_list' %}";
+      })
+  </script>
 {% endblock %}

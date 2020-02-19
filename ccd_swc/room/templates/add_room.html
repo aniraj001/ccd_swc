@@ -6,6 +6,7 @@
 {% load static %}
 
 {% block body %}
+<div id = "load"><span class="loader"><span class="loader-inner"></span></span></div>
 <br><br>
 <h1 id = "mm" style ="text-align:center;">Barak Hostel Map</h1>
     <br> <br>
@@ -222,8 +223,7 @@
     }
     #panell
     {
-
-      width:800px;
+      width:75%;
       background-color:rgba(0,0,225,0.2);
       border-radius:20px;
       border :2px solid red;
@@ -232,6 +232,7 @@
       font-family: Goudy Bookletter 1911, sans-serif;
       padding :5px;
       margin-bottom:20px;
+      text-align:left;
     }
     #hi
     {
@@ -363,6 +364,84 @@
       width:102px;
       margin-left:600px;
     }
+    #load
+    {
+      opacity:1;
+      background-color:orange;
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0px;
+      left:0px;
+      z-index:1000;
+      visibility:hidden;
+    }
+
+  .loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  top: 50%;
+  animation: loader 2s infinite ease;
+  }
+  body, html {
+  height: 100%;
+  text-align: center;
+}
+
+  .loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+  }
+
+  @keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+  }
+
+  @keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+
+  25% {
+    height: 0%;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0%;
+  }
+  }
   </style>
   {% if user.is_authenticated %}
      <input id = "hi" type="submit" class="btn btn-default" value="Save Changes">
@@ -489,7 +568,9 @@ onmouseup = function(e){
   <script type="text/javascript" src="{% static 'add_room.js' %}"></script>
 
   <script type="text/javascript">
+
     document.getElementById("sd").onclick = function(e){
+      $('#load').css("visibility","visible");
               for(var i=0;i<rooms.length;i++){
                   lop = lop+rooms[i]+" ";
               }
@@ -503,7 +584,7 @@ onmouseup = function(e){
                   csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 },
                 success:function(){
-                     alert("You will now be redirected");
+                     // alert("You will now be redirected");
                      window.location = "{% url 'room:detail' pk=primary %}";
                 }
               })

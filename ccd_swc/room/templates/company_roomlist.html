@@ -32,7 +32,6 @@
 
 </style>
 
-
 <br> <br>
 <h1 id = "mm" style ="text-align:center;">{{hostel}} Hostel Map</h1>
 <div class="container" id="man">
@@ -198,6 +197,7 @@
 <br>
 </div>
 <style>
+
 body
 {
   background-color: linen;
@@ -206,7 +206,6 @@ body
   -moz-user-select:none;
   -ms-user-select:none;
   user-select:none;
-  box-shadow: inset 0 0 0 1000px rgba(255,255,255,.65);
 }
 #man
 {
@@ -312,6 +311,8 @@ h1
 <div id = 'room-numbers'>{% for room in roomlist %}{{room.room_no}},{{room.company.name}},{% endfor %}</div>
 <div id = "uniq" hidden>{{company}}</div>
 <script type="text/javascript">
+
+    // window.onload = function(){alert("Loaded")};
     var r = document.getElementById("room-numbers").innerHTML;
     document.getElementById("room-numbers").style.display = "none";
     var lr = r.split(",");

@@ -46,6 +46,8 @@ background-image:none;
 box-shadow:none;
 }
 .header .navbar-default .navbar-brand{
+  margin-left:100px;
+  margin-top:10px;
 font-size: 30px;
 font-weight: bold;
 color: black;
@@ -55,15 +57,25 @@ color: black;
  font-size:22px;
  color:black;
  font-weight:700;
+ padding-top:17px;
 }
 .header .navbar-default .navbar-nav>li:hover a{
-color: brown;
+color: white;
 font-weight:700;
-border-bottom: 2px solid brown;
+border-bottom: 2px solid grey;
+background-color:rgba(0,0,0,0.2);
+transition : all ease 0.5s;
+border-radius:10px;
+
 }
 #ff:hover {
-color: brown;
+
+color: white;
 font-weight:700;
+border-bottom: 2px solid grey;
+background-color:rgba(0,0,0,0.2);
+transition : all ease 0.7s;
+border-radius:10px;
 
 }
 
@@ -97,6 +109,14 @@ position:relative;
 .navbar-right {
   float: right!important;
 }
+#logo{
+  width:77px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  margin-left:10px;
+  margin-top:0px;
+}
 </style>
 
 
@@ -121,8 +141,12 @@ position:relative;
 <span class="icon-bar"></span>
 
 </button>
+<div id = "logo"></div>
 <div class="navlogo col-xl-1">
+<a id = "logo" class="navbar-brand"><img id = "logo"src="https://upload.wikimedia.org/wikipedia/en/thumb/1/12/IIT_Guwahati_Logo.svg/760px-IIT_Guwahati_Logo.svg.png"></a>
+
 <a class="navbar-brand" id = "ff" href="{% url 'room:index'  %}">CCD Room Allotment</a>
+
 </div>
 </div>
  <div class="col-xl-8">

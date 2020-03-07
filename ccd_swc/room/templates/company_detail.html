@@ -9,9 +9,7 @@
 
   body {
       background: linear-gradient(45deg, rgb(240,200,215), rgb(200,200,70), rgb(70,250,200), rgb(250,050,200));
-      /* background-image: url("https://i.ytimg.com/vi/92C1QU4jr30/maxresdefault.jpg"); */
       background-size: 200% 200%;
-      /* background-size:cover; */
       animation: gradient 10s ease infinite;
     }
   @keyframes gradient {
@@ -211,12 +209,19 @@
     <input onclick="location.href='{% url 'room:roomadd1' pk=company.pk %}'" type="button" class="btn btn-primary" value="Add Room">
     <input onclick="location.href='{% url 'room:room_remove1' pk=company.pk %}'" type="button" class="btn btn-danger" value="Delete Room">
     {% endif %}
-
   </div>
   <script>
     $('input').click(function(){
       $('#load').css("visibility","visible");
-    })
+    });
+    window.addEventListener( "pageshow", function ( event )
+    {
+      var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
+      if( historyTraversal )
+      {
+        window.location.reload();
+      }
+    });
   </script>
 
   {% endblock %}

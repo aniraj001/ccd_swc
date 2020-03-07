@@ -15,18 +15,12 @@
       <h1 style="text-align:center"><strong>INSTRUCTIONS</strong></h1>
           <br>
           <div class = "lol">Example</div>
-
           <div id = "fff">Unoccupied</div>
           <br>
           <div class = "occupied">Example</div>
-
           <div id = "fff">Occupied</div>
           <br>
-          <!-- <div class = "waste">Example</div>
-          <div id = "fff">Bathroom</div>
-          <br> -->
           <div class = "active">Example</div>
-
           <div id = "fff">Selected Through Drag</div>
           <br>
           <h4>
@@ -36,7 +30,6 @@
             <br><br>
             Upon sumitting("Submit Button"), all selected rooms will be added
           </h4>
-
     </div>
     </div>
 
@@ -202,10 +195,9 @@
     <form id="newuserform">
       {% csrf_token %}
     {% if user.is_authenticated %}
-    <input id = "sd" type="submit" class="btn btn-success" value="Submit">
+      <input id = "sd" type="submit" class="btn btn-success" value="Submit">
     {% endif %}
   </form>
-
   <style>
     h1
     {
@@ -313,7 +305,6 @@
       padding:0;
       margin-right:0px;
     }
-
     .waste
     {
       width: 100px;
@@ -369,7 +360,8 @@
       margin-right:20px;
       width:1455px;
     }
-    .occupied {
+    .occupied
+    {
       width: 100px;
       border: 2px solid green;
       padding: 10px 10px 10px 10px;
@@ -378,7 +370,8 @@
       background-color : lightblue;
       text-align:center;
     }
-    #hi {
+    #hi
+    {
       float: right;
     }
     .vc
@@ -487,7 +480,8 @@ var mx = 0;
 var ff = document.getElementById("man");
 var a5;
 var div = document.getElementById('div'), x1 = 0, y1 = 0, x2 = 0, y2 = 0;
-function reCalc(){
+function reCalc()
+{
     var x3 = Math.min(x1,x2);
     var x4 = Math.max(x1,x2);
     var y3 = Math.min(y1,y2);
@@ -500,7 +494,8 @@ function reCalc(){
     div.style.height = y4 - y3 + 'px';
 }
 var aa = 0;
-ff.onmousedown = function(e){
+ff.onmousedown = function(e)
+{
     a5 = 1;
     div.hidden = 0;
     var top  = window.pageYOffset;
@@ -513,7 +508,8 @@ ff.onmousedown = function(e){
     aa = 1;
 };
 var a1;
-ff.onmousemove = function(e){
+ff.onmousemove = function(e)
+{
     if(aa != 1) return;
     div.style.borderWidth = "1px";
     var top  = window.pageYOffset;
@@ -524,16 +520,20 @@ ff.onmousemove = function(e){
     var rect1 = div.getBoundingClientRect();
     for(var i=0;i<x.length;i++)
     {
-      if(a5 == 1){
+      if(a5 == 1)
+      {
             var rect2 = x[i].getBoundingClientRect();
             var overlap = !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom)
 
-            if(overlap == 1){
-                if(!sub.includes(x[i].innerHTML)){
+            if(overlap == 1)
+            {
+                if(!sub.includes(x[i].innerHTML))
+                {
                   x[i].classList.add('active');
                   x[i].classList.remove('lol');
                 }
-                else {
+                else
+                {
                   x[i].classList.add('lol');
                   x[i].classList.remove('active');
                 }
@@ -551,7 +551,8 @@ ff.onmousemove = function(e){
       }
     }
 };
-onmouseup = function(e){
+onmouseup = function(e)
+{
   aa=0;
   div.style.borderWidth = "0px";
   a5 = 0;
@@ -562,19 +563,24 @@ onmouseup = function(e){
   var y = document.getElementById("hi");
   console.log(y);
   var lop = "";
-  y.onclick = function(){
+  y.onclick = function()
+  {
      rooms = [];
      for(var i=0;i<x.length;i++)
      {
-        if(x[i].className == 'active'){
+        if(x[i].className == 'active')
+        {
             rooms.push(x[i].innerHTML);
             sub.push(x[i].innerHTML);
         }
-        else{
+        else
+        {
           if(sub.includes(x[i].innerHTML))
           {
-            for(var j = sub.length - 1; j >= 0; j--) {
-              if(sub[j] == x[i].innerHTML) {
+            for(var j = sub.length - 1; j >= 0; j--)
+            {
+              if(sub[j] == x[i].innerHTML)
+              {
                 sub.splice(j, 1);
               }
             }
@@ -589,7 +595,6 @@ onmouseup = function(e){
 
   <div id = 'room-numbers'>{% for room in rooms %}{{room.room_no}} {% endfor %}</div>
   <script type="text/javascript" src="{% static 'add_room.js' %}"></script>
-
   <script type="text/javascript">
 
     document.getElementById("sd").onclick = function(e){

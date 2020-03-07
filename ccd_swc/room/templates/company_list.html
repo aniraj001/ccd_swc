@@ -60,9 +60,6 @@ input, button
 #cover
 {
     position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
     top:0;
     width: 52%;
     padding: 0px;
@@ -72,8 +69,26 @@ input, button
     border-radius: 15px;
     box-shadow: 0 5px 50px lightblue, 0 0 0 10px white;
     transform: scale(0.6);
+    scale: 0.6;
 }
-
+@-moz-document url-prefix()
+            {
+              #cover
+              {
+                  position: absolute;
+                  top:0;
+                  width: 70%;
+                  padding: 0px;
+                  margin-top: 189px;
+                  margin-left: 35%;
+                  background-color: black;
+                  border-radius: 15px;
+                  box-shadow: 0 5px 50px lightblue, 0 0 0 10px white;
+                  transform: scale(0.6);
+                  scale: 0.6;
+                  height:90px;
+              }
+            }
 form
 {
     height: 110px;
@@ -366,10 +381,11 @@ body
   z-index:1000;
   visibility:hidden;
   }
-  body, html {
+  body, html
+  {
   height: 100%;
   text-align: center;
-}
+  }
 
 body {
 background-color: #242F3F;
@@ -489,8 +505,7 @@ animation: loader-inner 2s infinite ease-in;
 
   <br>
   <div id="pad">
-    <
-    <!-- <input id = 'f1' onclick="location.href='{% url 'room:barak_room_list' %}'" type="button" class="abc" value="Barak Room List"> -->
+
     <input id = 'f1' type="button" class="abc" value="Barak Room List">
     <input id = 'f2' type="button" class="abc" value="Umiam Room List">
     {% if user.is_authenticated %}
@@ -500,11 +515,15 @@ animation: loader-inner 2s infinite ease-in;
 
     {% endif %}
   </div>
-
-
-
-
   <script type="text/javascript">
+    window.addEventListener( "pageshow", function ( event )
+    {
+      var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
+      if( historyTraversal )
+      {
+        window.location.reload();
+      }
+    });
       $('#f1').click(function(){
         $('#load').css("visibility","visible");
         window.location.href = "{% url 'room:barak_room_list' %}";
